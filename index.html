@@ -1781,6 +1781,261 @@
             0% { transform: scale(0.9); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
+
+        .delete-habit-btn {
+            background: transparent;
+            border: none;
+            color: var(--accent-danger);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0 0.5rem;
+            line-height: 1;
+            opacity: 0.5;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .delete-habit-btn:hover {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        /* ----------------------------------------- */
+        /* 🧘 STUDYCALM MIND COMPANION HUB STYLES   */
+        /* ----------------------------------------- */
+
+        /* Header Navigation Tab Switcher */
+        .main-nav-tabs {
+            display: flex;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glow);
+            padding: 0.35rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            gap: 0.25rem;
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
+        }
+
+        .nav-tab {
+            background: transparent;
+            border: none;
+            color: var(--color-text-muted);
+            padding: 0.6rem 1.25rem;
+            font-family: var(--font-headings);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border-radius: var(--radius-md);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-tab:hover {
+            color: var(--color-text-main);
+            background: hsla(180, 100%, 50%, 0.05);
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));
+            color: hsl(222, 25%, 5%);
+            box-shadow: 0 0 15px hsla(180, 100%, 50%, 0.25);
+        }
+
+        /* Breathing visualizer structure */
+        .breathing-module {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .breathing-description, .noise-description {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .breathing-visualizer-container {
+            width: 240px;
+            height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .breathing-outer-ring {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: hsla(222, 25%, 15%, 0.6);
+            border: 1px solid var(--border-glow);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-card);
+        }
+
+        /* Ring visualizer that scales dynamically */
+        .breathing-pulse-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid var(--accent-cyan);
+            box-shadow: 0 0 25px hsla(180, 100%, 50%, 0.3);
+            transform: scale(1);
+            transition: transform 4s linear, border-color 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        /* Circular center core holding timers & states */
+        .breathing-circle-core {
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            background: var(--bg-surface-glow);
+            border: 1px solid var(--border-glow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .breathing-instruction {
+            font-family: var(--font-headings);
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+            transition: color 0.5s ease;
+        }
+
+        .breathing-timer {
+            font-family: var(--font-headings);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-text-main);
+            line-height: 1;
+        }
+
+        /* Breathing states classes dynamically bound via JavaScript */
+        .breathing-inhale {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 35px hsla(180, 100%, 50%, 0.5);
+        }
+        .breathing-hold-inhale {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 35px hsla(42, 100%, 55%, 0.5);
+        }
+        .breathing-exhale {
+            border-color: var(--accent-violet);
+            box-shadow: 0 0 35px hsla(270, 90%, 65%, 0.5);
+        }
+        .breathing-hold-exhale {
+            border-color: var(--accent-danger);
+            box-shadow: 0 0 35px hsla(350, 85%, 55%, 0.4);
+        }
+
+        /* Scrollable Stress Log Entries styling */
+        .vent-entry-item {
+            background: hsla(222, 25%, 10%, 0.5);
+            border: 1px solid var(--border-glow);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .vent-entry-item:hover {
+            border-color: hsla(180, 100%, 50%, 0.2);
+        }
+
+        .vent-entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+        }
+
+        .vent-entry-actions button {
+            background: transparent;
+            border: none;
+            color: var(--accent-danger);
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            transition: background 0.2s ease;
+        }
+
+        .vent-entry-actions button:hover {
+            background: hsla(350, 85%, 55%, 0.15);
+        }
+
+        .vent-entry-body {
+            font-size: 0.85rem;
+            color: var(--color-text-main);
+            line-height: 1.4;
+            white-space: pre-wrap;
+        }
+
+        /* Responsive layout adaptation for header */
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: stretch;
+                text-align: center;
+            }
+            .branding {
+                text-align: center;
+            }
+            .branding h1 {
+                justify-content: center;
+            }
+            .main-nav-tabs {
+                justify-content: center;
+                align-self: center;
+            }
+            .header-stats {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Grid container setups for SPA views to occupy full width and layout as 2-columns */
+        #view-study-dashboard, #view-calm-hub {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            width: 100%;
+        }
+
+        @media (max-width: 1024px) {
+            #view-study-dashboard, #view-calm-hub {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1791,6 +2046,10 @@
             <div class="branding">
                 <h1>FocusCGL</h1>
                 <p>An Anti-Distraction Engine built for SSC CGL Aspirants</p>
+            </div>
+            <div class="main-nav-tabs">
+                <button class="nav-tab active" id="btn-view-study" onclick="switchMainView('study')">📊 STUDY DASHBOARD</button>
+                <button class="nav-tab" id="btn-view-calm" onclick="switchMainView('calm')">🧘 सुकून</button>
             </div>
             <div class="header-stats">
                 <div class="stat-badge" style="border-color: var(--accent-cyan); box-shadow: 0 0 15px hsla(180, 100%, 50%, 0.15);" title="Total Focused Time Accumulated">
@@ -1824,7 +2083,9 @@
             </div>
         </header>
 
-        <!-- LEFT COLUMN: SPRINT TIMER & ATOMIC HABITS CHECKLIST -->
+        <!-- WRAPPER FOR STUDY DASHBOARD VIEW -->
+        <div id="view-study-dashboard">
+            <!-- LEFT COLUMN: SPRINT TIMER & ATOMIC HABITS CHECKLIST -->
         <div style="display: flex; flex-direction: column; gap: 2rem;">
             
             <!-- FOCUS SPRINT TIMER -->
@@ -1920,40 +2181,12 @@
                     </div>
 
                     <!-- Visual Routine Checklist -->
-                    <div class="timeline-container">
-                        <div class="timeline-block" onclick="toggleBlock(this, 'block-morning')">
-                            <div class="timeline-checkbox"></div>
-                            <div class="timeline-info">
-                                <span class="timeline-time-tag">Block 1 // 08:30 - 09:30 AM</span>
-                                <span class="timeline-name">Morning Confidence Sprint</span>
-                                <span class="timeline-desc">English Vocabulary Recall (20m) & Reasoning (15m Sectional)</span>
-                            </div>
-                        </div>
-                        <div class="timeline-block" onclick="toggleBlock(this, 'block-afternoon')">
-                            <div class="timeline-checkbox"></div>
-                            <div class="timeline-info">
-                                <span class="timeline-time-tag">Block 2 // 11:30 - 12:30 PM</span>
-                                <span class="timeline-name">Afternoon Kinesthetic Engine</span>
-                                <span class="timeline-desc">Math Pen-and-Paper Formulas & Topic drills (Active writing)</span>
-                            </div>
-                        </div>
-                        <div class="timeline-block" onclick="toggleBlock(this, 'block-evening')">
-                            <div class="timeline-checkbox"></div>
-                            <div class="timeline-info">
-                                <span class="timeline-time-tag">Block 3 // 04:30 - 05:30 PM</span>
-                                <span class="timeline-name">Evening Storyline Input</span>
-                                <span class="timeline-desc">General Awareness animated/visual lectures & PYQs check</span>
-                            </div>
-                        </div>
-                        <div class="timeline-block" onclick="toggleBlock(this, 'block-night')">
-                            <div class="timeline-checkbox"></div>
-                            <div class="timeline-info">
-                                <span class="timeline-time-tag">Block 4 // 09:00 - 10:15 PM</span>
-                                <span class="timeline-name">Night Mock Gamification</span>
-                                <span class="timeline-desc">Complete 1-Hour CBE Mock Test & write Top 3 errors in Error Log</span>
-                            </div>
-                        </div>
+                    <div class="timeline-container" id="timeline-container">
+                        <!-- Loaded dynamically -->
                     </div>
+                    <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem; border-color: var(--accent-cyan); color: var(--accent-cyan);" onclick="openCustomHabitModal()">
+                        ➕ ADD CUSTOM HABIT
+                    </button>
                 </div>
             </div>
         </div>
@@ -2153,6 +2386,122 @@
                     <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem; border-color: var(--accent-cyan); color: var(--accent-cyan); display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.85rem;" onclick="openCustomSyllabusModal()">
                         ➕ ADD CUSTOM CONCEPT
                     </button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- STUDYCALM HUB SPA VIEW -->
+        <div id="view-calm-hub" style="display: none;">
+            <!-- LEFT COLUMN: FOCUS BREATHING & BROWN NOISE -->
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+                
+                <!-- 🧘 Navy SEAL Study Focus Breathing -->
+                <div class="glass-card card-breathing">
+                    <div class="card-title-row">
+                        <div class="card-title">
+                            🧘 प्राणायाम
+                            <span class="badge-tag" id="breathing-status-tag">तैयार</span>
+                        </div>
+                    </div>
+                    <div class="breathing-module">
+                        <div class="breathing-description">
+                            Box breathing is used by Navy SEALs to lower stress hormones, clear adrenaline, and reset cognitive focus. Cycle: 4s Inhale ➔ 4s Hold ➔ 4s Exhale ➔ 4s Hold.
+                        </div>
+                        
+                        <!-- Pulse Visualizer Circle -->
+                        <div class="breathing-visualizer-container">
+                            <div class="breathing-outer-ring">
+                                <div class="breathing-pulse-ring" id="breathing-ring"></div>
+                                <div class="breathing-circle-core" id="breathing-core">
+                                    <span class="breathing-instruction" id="breathing-text">तैयार हो जाएं</span>
+                                    <span class="breathing-timer" id="breathing-timer-num">4</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="breathing-controls" style="display: flex; gap: 1rem; width: 100%;">
+                            <button class="btn btn-primary" id="btn-breathing-start" onclick="toggleBreathing()">शुरू करें</button>
+                            <button class="btn btn-secondary" id="btn-breathing-reset" onclick="resetBreathing()">रीसेट</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🎧 Offline Study Focus Brown Noise -->
+                <div class="glass-card card-brown-noise">
+                    <div class="card-title-row">
+                        <div class="card-title">
+                            🎧 गुंजन
+                            <span class="badge-tag" id="noise-status-tag">बंद</span>
+                        </div>
+                    </div>
+                    <div class="noise-module">
+                        <div class="noise-description">
+                            Blocks out distractive background chatter, neighbors, and ambient sounds. Generated locally on your machine via Web Audio API—works completely offline.
+                        </div>
+
+                        <!-- Audio Interface Controls -->
+                        <div class="audio-control-box" style="margin: 1.5rem 0; padding: 1.25rem; background: var(--bg-surface-glow); border: 1px solid var(--border-glow); border-radius: var(--radius-md); width: 100%;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+                                <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-text-muted);">ध्वनि की स्थिति:</span>
+                                <span id="audio-status-label" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-danger);">मौन</span>
+                            </div>
+                            
+                            <!-- Volume slider -->
+                            <div class="volume-slider-row" style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; font-size: 0.75rem;">
+                                    <label for="noise-volume" style="text-transform: uppercase; font-weight: 600; color: var(--color-text-muted);">आवाज़</label>
+                                    <span id="noise-volume-pct" style="color: var(--accent-cyan); font-weight: 700;">50%</span>
+                                </div>
+                                <input type="range" id="noise-volume" min="0" max="1" step="0.05" value="0.5" oninput="changeNoiseVolume(this.value)" style="width: 100%; accent-color: var(--accent-cyan); height: 6px; border-radius: 3px; cursor: pointer; background: var(--bg-base); border: none;">
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" id="btn-noise-toggle" onclick="toggleBrownNoise()" style="width: 100%;">गुंजन शुरू करें</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: VENT JOURNAL -->
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+                
+                <!-- 💬 Exam Anxiety Stress Vent Journal -->
+                <div class="glass-card card-vent-journal">
+                    <div class="card-title-row">
+                        <div class="card-title">
+                            💬 गुबार
+                        </div>
+                    </div>
+                    <div class="vent-module">
+                        <div class="vent-description" style="margin-bottom: 1.25rem; font-size: 0.85rem; color: var(--color-text-muted);">
+                            Release your test anxieties, syllabus fear, or fatigue here. Dump it, hit the stress booster, and receive an aggressive Goggins mental grit response. Past logs are kept locally in your browser.
+                        </div>
+
+                        <!-- Feedback Box -->
+                        <div id="goggins-feedback-container" class="goggins-feedback-box" style="display: none; margin-bottom: 1.25rem; padding: 1.25rem; border-left: 4px solid var(--accent-gold); background: hsla(42, 100%, 55%, 0.05); border-radius: var(--radius-sm);">
+                            <div style="font-family: var(--font-headings); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-gold); font-weight: 700; margin-bottom: 0.5rem;">🔥 गोगिन्स संदेश:</div>
+                            <p id="goggins-feedback-text" style="font-size: 0.95rem; font-style: italic; font-weight: 600; line-height: 1.5; color: var(--color-text-main);"></p>
+                        </div>
+
+                        <div class="form-row" style="margin-bottom: 1rem;">
+                            <label for="input-vent-text" style="color: var(--accent-cyan); font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;">अपना तनाव / मन की उलझनें लिखें</label>
+                            <textarea id="input-vent-text" placeholder="अपना तनाव या मन की बात लिखें... (जैसे 'मॉक टेस्ट में नंबर नहीं बढ़ रहे और पढ़ने का मन नहीं कर रहा है')" style="width: 100%; height: 120px; background: var(--bg-surface-glow); border: 1px solid var(--border-glow); border-radius: var(--radius-md); padding: 1rem; color: var(--color-text-main); font-family: var(--font-body); font-size: 0.95rem; resize: none; transition: border-color 0.3s ease;"></textarea>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="submitStressVent()" style="width: 100%; margin-bottom: 1.5rem; background: linear-gradient(135deg, var(--accent-gold), var(--accent-violet)); border: none; color: black; font-weight: 800;">गुबार बाहर निकालें</button>
+
+                        <!-- Past Vents History -->
+                        <div class="vent-history-container" style="border: 1px solid var(--border-glow); border-radius: var(--radius-md); background: var(--bg-surface-glow); padding: 1.25rem;">
+                            <div style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-glow); display: flex; justify-content: space-between; align-items: center;">
+                                <span>📜 राख (मिटाया गया तनाव)</span>
+                                <span id="vent-history-count" style="color: var(--color-text-muted); font-size: 0.75rem;">(0 vents)</span>
+                            </div>
+                            <ul id="vent-history-list" style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; max-height: 250px; overflow-y: auto; padding-right: 4px;">
+                                <!-- Populated dynamically -->
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2366,6 +2715,36 @@
             </div>
 
             <button class="btn btn-primary" style="width: 100%; padding: 0.75rem;" onclick="submitCustomSyllabusItem()">ADD TO SYLLABUS</button>
+        </div>
+    </div>
+
+    <!-- ADD CUSTOM HABIT OVERLAY MODAL -->
+    <div class="modal-overlay" id="custom-habit-modal" style="display: none;">
+        <div class="modal-content" style="border-color: var(--accent-cyan); text-align: left; max-width: 450px;">
+            <button class="modal-close" onclick="closeCustomHabitModal()">&times;</button>
+            <h2 style="font-family: var(--font-headings); font-size: 1.6rem; color: var(--accent-cyan); text-align: center; margin-bottom: 0.5rem;">
+                ➕ Add Custom Habit
+            </h2>
+            <p style="color: var(--color-text-muted); font-size: 0.8rem; text-align: center; margin-bottom: 1.5rem;">
+                Design a new custom habit slot to track in your daily timeline.
+            </p>
+            
+            <div class="form-row" style="margin-bottom: 1rem;">
+                <label for="custom-habit-name" style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.5rem;">Habit / Routine Name</label>
+                <input type="text" id="custom-habit-name" placeholder="e.g. Formula Book Revision, Read Newspaper..." style="width: 100%; background: var(--bg-base); border: 1px solid var(--border-glow); border-radius: var(--radius-sm); padding: 0.75rem; color: var(--color-text-main); font-family: var(--font-body); font-size: 0.85rem;">
+            </div>
+
+            <div class="form-row" style="margin-bottom: 1rem;">
+                <label for="custom-habit-time" style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.5rem;">Time / Slot</label>
+                <input type="text" id="custom-habit-time" placeholder="e.g. 07:00 - 07:30 AM, Evening Slot..." style="width: 100%; background: var(--bg-base); border: 1px solid var(--border-glow); border-radius: var(--radius-sm); padding: 0.75rem; color: var(--color-text-main); font-family: var(--font-body); font-size: 0.85rem;">
+            </div>
+
+            <div class="form-row" style="margin-bottom: 1.5rem;">
+                <label for="custom-habit-desc" style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.5rem;">Brief Description</label>
+                <input type="text" id="custom-habit-desc" placeholder="e.g. Review algebra rules & active writing practice..." style="width: 100%; background: var(--bg-base); border: 1px solid var(--border-glow); border-radius: var(--radius-sm); padding: 0.75rem; color: var(--color-text-main); font-family: var(--font-body); font-size: 0.85rem;">
+            </div>
+
+            <button class="btn btn-primary" style="width: 100%; padding: 0.75rem;" onclick="submitCustomHabit()">ADD TO TIMELINE</button>
         </div>
     </div>
 
