@@ -2625,7 +2625,7 @@
             const errorIntelHeader = document.querySelector('.card-error-intel .card-title');
             if (errorIntelHeader) {
                 if (isAdminMode) {
-                    errorIntelHeader.innerHTML = "🧬 Error Intelligence System <span style='font-size: 0.8rem; color: var(--accent-cyan); margin-left: 8px; font-family: var(--font-body); font-weight: 500;'>[Admin Active]</span>";
+                    errorIntelHeader.innerHTML = "🧬 Error Intelligence System <span style='font-size: 0.8rem; color: var(--accent-cyan); margin-left: 8px; font-family: var(--font-body); font-weight: 500; vertical-align: middle;'>[Admin Active]</span> <button style='padding: 4px 10px; font-size: 0.75rem; border-radius: 8px; background: hsla(180, 100%, 50%, 0.15); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); margin-left: 12px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-body); font-weight: 600; line-height: 1; transition: all 0.2s ease; vertical-align: middle;' onclick='try { openAdminTelemetryModal(); } catch(err) { alert(\"Button error: \" + err.message); }' onmouseover='this.style.background=\"hsla(180, 100%, 50%, 0.25)\"' onmouseout='this.style.background=\"hsla(180, 100%, 50%, 0.15)\"'>OPEN METRICS</button>";
                 }
                 errorIntelHeader.style.cursor = isAdminMode ? 'pointer' : 'default';
                 errorIntelHeader.title = isAdminMode ? 'Admin Tools (Double-click to open)' : '';
