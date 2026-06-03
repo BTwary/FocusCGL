@@ -2049,7 +2049,7 @@
             </div>
             <div class="main-nav-tabs">
                 <button class="nav-tab active" id="btn-view-study" onclick="switchMainView('study')">📊 STUDY DASHBOARD</button>
-                <button class="nav-tab" id="btn-view-calm" onclick="switchMainView('calm')">🧘 सुकून</button>
+                <button class="nav-tab" id="btn-view-calm" onclick="switchMainView('calm')">🧘 CALM</button>
             </div>
             <div class="header-stats">
                 <div class="stat-badge" style="border-color: var(--accent-cyan); box-shadow: 0 0 15px hsla(180, 100%, 50%, 0.15);" title="Total Focused Time Accumulated">
@@ -2400,8 +2400,8 @@
                 <div class="glass-card card-breathing">
                     <div class="card-title-row">
                         <div class="card-title">
-                            🧘 प्राणायाम
-                            <span class="badge-tag" id="breathing-status-tag">तैयार</span>
+                            🧘 Breathe
+                            <span class="badge-tag" id="breathing-status-tag">Ready</span>
                         </div>
                     </div>
                     <div class="breathing-module">
@@ -2414,7 +2414,7 @@
                             <div class="breathing-outer-ring">
                                 <div class="breathing-pulse-ring" id="breathing-ring"></div>
                                 <div class="breathing-circle-core" id="breathing-core">
-                                    <span class="breathing-instruction" id="breathing-text">तैयार हो जाएं</span>
+                                    <span class="breathing-instruction" id="breathing-text">Get Ready</span>
                                     <span class="breathing-timer" id="breathing-timer-num">4</span>
                                 </div>
                             </div>
@@ -2422,43 +2422,43 @@
 
                         <!-- Controls -->
                         <div class="breathing-controls" style="display: flex; gap: 1rem; width: 100%;">
-                            <button class="btn btn-primary" id="btn-breathing-start" onclick="toggleBreathing()">शुरू करें</button>
-                            <button class="btn btn-secondary" id="btn-breathing-reset" onclick="resetBreathing()">रीसेट</button>
+                            <button class="btn btn-primary" id="btn-breathing-start" onclick="toggleBreathing()">Start</button>
+                            <button class="btn btn-secondary" id="btn-breathing-reset" onclick="resetBreathing()">Reset</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- 🎧 Offline Study Focus Brown Noise -->
+                <!-- 🧘 Offline Study Focus OM Sound -->
                 <div class="glass-card card-brown-noise">
                     <div class="card-title-row">
                         <div class="card-title">
-                            🎧 गुंजन
-                            <span class="badge-tag" id="noise-status-tag">बंद</span>
+                            🧘 OM
+                            <span class="badge-tag" id="noise-status-tag">Off</span>
                         </div>
                     </div>
                     <div class="noise-module">
                         <div class="noise-description">
-                            Blocks out distractive background chatter, neighbors, and ambient sounds. Generated locally on your machine via Web Audio API—works completely offline.
+                            The sacred, spiritual sound of the universe. Used for deep concentration, mental anchoring, and focus. Synthesized locally on your device via Web Audio API—works completely offline.
                         </div>
 
                         <!-- Audio Interface Controls -->
                         <div class="audio-control-box" style="margin: 1.5rem 0; padding: 1.25rem; background: var(--bg-surface-glow); border: 1px solid var(--border-glow); border-radius: var(--radius-md); width: 100%;">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
-                                <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-text-muted);">ध्वनि की स्थिति:</span>
-                                <span id="audio-status-label" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-danger);">मौन</span>
+                                <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-text-muted);">Audio Status:</span>
+                                <span id="audio-status-label" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-danger);">Muted</span>
                             </div>
                             
                             <!-- Volume slider -->
                             <div class="volume-slider-row" style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;">
                                 <div style="display: flex; justify-content: space-between; font-size: 0.75rem;">
-                                    <label for="noise-volume" style="text-transform: uppercase; font-weight: 600; color: var(--color-text-muted);">आवाज़</label>
+                                    <label for="noise-volume" style="text-transform: uppercase; font-weight: 600; color: var(--color-text-muted);">Volume</label>
                                     <span id="noise-volume-pct" style="color: var(--accent-cyan); font-weight: 700;">50%</span>
                                 </div>
                                 <input type="range" id="noise-volume" min="0" max="1" step="0.05" value="0.5" oninput="changeNoiseVolume(this.value)" style="width: 100%; accent-color: var(--accent-cyan); height: 6px; border-radius: 3px; cursor: pointer; background: var(--bg-base); border: none;">
                             </div>
                         </div>
 
-                        <button class="btn btn-primary" id="btn-noise-toggle" onclick="toggleBrownNoise()" style="width: 100%;">गुंजन शुरू करें</button>
+                        <button class="btn btn-primary" id="btn-noise-toggle" onclick="toggleBrownNoise()" style="width: 100%;">Play OM</button>
                     </div>
                 </div>
             </div>
@@ -2470,7 +2470,7 @@
                 <div class="glass-card card-vent-journal">
                     <div class="card-title-row">
                         <div class="card-title">
-                            💬 गुबार
+                            💬 Vent
                         </div>
                     </div>
                     <div class="vent-module">
@@ -2480,21 +2480,21 @@
 
                         <!-- Feedback Box -->
                         <div id="goggins-feedback-container" class="goggins-feedback-box" style="display: none; margin-bottom: 1.25rem; padding: 1.25rem; border-left: 4px solid var(--accent-gold); background: hsla(42, 100%, 55%, 0.05); border-radius: var(--radius-sm);">
-                            <div style="font-family: var(--font-headings); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-gold); font-weight: 700; margin-bottom: 0.5rem;">🔥 गोगिन्स संदेश:</div>
+                            <div style="font-family: var(--font-headings); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-gold); font-weight: 700; margin-bottom: 0.5rem;">🔥 Goggins Charge:</div>
                             <p id="goggins-feedback-text" style="font-size: 0.95rem; font-style: italic; font-weight: 600; line-height: 1.5; color: var(--color-text-main);"></p>
                         </div>
 
                         <div class="form-row" style="margin-bottom: 1rem;">
-                            <label for="input-vent-text" style="color: var(--accent-cyan); font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;">अपना तनाव / मन की उलझनें लिखें</label>
-                            <textarea id="input-vent-text" placeholder="अपना तनाव या मन की बात लिखें... (जैसे 'मॉक टेस्ट में नंबर नहीं बढ़ रहे और पढ़ने का मन नहीं कर रहा है')" style="width: 100%; height: 120px; background: var(--bg-surface-glow); border: 1px solid var(--border-glow); border-radius: var(--radius-md); padding: 1rem; color: var(--color-text-main); font-family: var(--font-body); font-size: 0.95rem; resize: none; transition: border-color 0.3s ease;"></textarea>
+                            <label for="input-vent-text" style="color: var(--accent-cyan); font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;">Write down your stress / anxiety</label>
+                            <textarea id="input-vent-text" placeholder="Vent your stress or frustration here... (e.g. 'Stuck at low mock test scores and unable to focus')" style="width: 100%; height: 120px; background: var(--bg-surface-glow); border: 1px solid var(--border-glow); border-radius: var(--radius-md); padding: 1rem; color: var(--color-text-main); font-family: var(--font-body); font-size: 0.95rem; resize: none; transition: border-color 0.3s ease;"></textarea>
                         </div>
 
-                        <button class="btn btn-primary" onclick="submitStressVent()" style="width: 100%; margin-bottom: 1.5rem; background: linear-gradient(135deg, var(--accent-gold), var(--accent-violet)); border: none; color: black; font-weight: 800;">गुबार बाहर निकालें</button>
+                        <button class="btn btn-primary" onclick="submitStressVent()" style="width: 100%; margin-bottom: 1.5rem; background: linear-gradient(135deg, var(--accent-gold), var(--accent-violet)); border: none; color: black; font-weight: 800;">Release Vent</button>
 
                         <!-- Past Vents History -->
                         <div class="vent-history-container" style="border: 1px solid var(--border-glow); border-radius: var(--radius-md); background: var(--bg-surface-glow); padding: 1.25rem;">
                             <div style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-glow); display: flex; justify-content: space-between; align-items: center;">
-                                <span>📜 राख (मिटाया गया तनाव)</span>
+                                <span>📜 Ashes (Cleared Vents)</span>
                                 <span id="vent-history-count" style="color: var(--color-text-muted); font-size: 0.75rem;">(0 vents)</span>
                             </div>
                             <ul id="vent-history-list" style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; max-height: 250px; overflow-y: auto; padding-right: 4px;">
