@@ -2518,11 +2518,28 @@
 
         function openAdminTelemetryModal() {
             const modal = document.getElementById('admin-telemetry-modal');
-            if (modal) {
-                updateAdminDashboardUI();
-                modal.classList.add('active');
-                trackFeatureUsage('error_dna');
+            if (!modal) {
+                alert("DEBUG ALERT: '#admin-telemetry-modal' element not found in DOM!");
+                return;
             }
+            
+            const userIdEl = document.getElementById('admin-telemetry-userid');
+            const container = document.getElementById('admin-feature-visits-container');
+            if (!userIdEl) {
+                alert("DEBUG ALERT: '#admin-telemetry-userid' not found inside modal!");
+            }
+            if (!container) {
+                alert("DEBUG ALERT: '#admin-feature-visits-container' not found inside modal!");
+            }
+            
+            try {
+                updateAdminDashboardUI();
+            } catch (e) {
+                alert("DEBUG ALERT: Error in updateAdminDashboardUI: " + e.message);
+            }
+            
+            modal.classList.add('active');
+            trackFeatureUsage('error_dna');
         }
         
         function closeAdminTelemetryModal() {
