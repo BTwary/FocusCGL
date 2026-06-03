@@ -2628,7 +2628,11 @@
                 errorIntelHeader.title = isAdminMode ? 'Admin Tools (Double-click to open)' : '';
                 errorIntelHeader.addEventListener('dblclick', () => {
                     if (isAdminMode) {
-                        openAdminTelemetryModal();
+                        try {
+                            openAdminTelemetryModal();
+                        } catch (err) {
+                            alert("Admin double-click error: " + err.message + "\nStack: " + err.stack);
+                        }
                     }
                 });
             }
@@ -2637,7 +2641,11 @@
             window.addEventListener('keydown', (e) => {
                 if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a' || e.key === 'T' || e.key === 't')) {
                     e.preventDefault();
-                    openAdminTelemetryModal();
+                    try {
+                        openAdminTelemetryModal();
+                    } catch (err) {
+                        alert("Admin key shortcut error: " + err.message + "\nStack: " + err.stack);
+                    }
                 }
             });
         });
