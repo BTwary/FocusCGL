@@ -2269,7 +2269,7 @@
     </div>
 
     <!-- SECRET TELEMETRY ADMIN DASHBOARD MODAL -->
-    <div class="modal-overlay" id="admin-telemetry-modal">
+    <div class="modal-overlay" id="admin-telemetry-modal" style="display: none;">
         <div class="modal-content" style="border-color: var(--accent-cyan); box-shadow: var(--shadow-neon-cyan); text-align: left; max-width: 550px;">
             <button class="modal-close" onclick="closeAdminTelemetryModal()">&times;</button>
             <h2 style="font-family: var(--font-headings); font-size: 1.6rem; color: var(--accent-cyan); text-align: center; margin-bottom: 0.5rem;">
@@ -2538,6 +2538,12 @@
                 alert("DEBUG ALERT: Error in updateAdminDashboardUI: " + e.message);
             }
             
+            // Programmatic style overrides to force visibility and bypass z-index/opacity issues
+            modal.style.setProperty('display', 'flex', 'important');
+            modal.style.setProperty('opacity', '1', 'important');
+            modal.style.setProperty('pointer-events', 'auto', 'important');
+            modal.style.setProperty('z-index', '9999', 'important');
+            
             modal.classList.add('active');
             trackFeatureUsage('error_dna');
         }
@@ -2546,6 +2552,10 @@
             const modal = document.getElementById('admin-telemetry-modal');
             if (modal) {
                 modal.classList.remove('active');
+                // Programmatic style overrides to force hide
+                modal.style.setProperty('display', 'none', 'important');
+                modal.style.setProperty('opacity', '0', 'important');
+                modal.style.setProperty('pointer-events', 'none', 'important');
             }
         }
         
