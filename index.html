@@ -2624,6 +2624,9 @@
             
             const errorIntelHeader = document.querySelector('.card-error-intel .card-title');
             if (errorIntelHeader) {
+                if (isAdminMode) {
+                    errorIntelHeader.innerHTML = "🧬 Error Intelligence System <span style='font-size: 0.8rem; color: var(--accent-cyan); margin-left: 8px; font-family: var(--font-body); font-weight: 500;'>[Admin Active]</span>";
+                }
                 errorIntelHeader.style.cursor = isAdminMode ? 'pointer' : 'default';
                 errorIntelHeader.title = isAdminMode ? 'Admin Tools (Double-click to open)' : '';
                 errorIntelHeader.addEventListener('dblclick', () => {
