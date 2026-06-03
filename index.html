@@ -2145,6 +2145,10 @@
                     <div class="syllabus-list" id="syllabus-items-list">
                         <!-- Populated dynamically -->
                     </div>
+                    
+                    <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem; border-color: var(--accent-cyan); color: var(--accent-cyan); display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.85rem;" onclick="openCustomSyllabusModal()">
+                        ➕ ADD CUSTOM CONCEPT
+                    </button>
                 </div>
             </div>
         </div>
@@ -2316,6 +2320,48 @@
                 <button class="btn btn-primary" style="flex: 2; padding: 0.75rem; font-size: 0.85rem;" onclick="saveTelemetryEndpointSettings()">SAVE CONFIG</button>
                 <button class="btn btn-secondary" style="flex: 1; padding: 0.75rem; font-size: 0.85rem; border-color: var(--accent-danger); color: var(--accent-danger);" onclick="exportTelemetryJSON()">EXPORT DATA</button>
             </div>
+        </div>
+    </div>
+
+    <!-- ADD CUSTOM SYLLABUS TOPIC/SUBTOPIC MODAL -->
+    <div class="modal-overlay" id="custom-syllabus-modal" style="display: none;">
+        <div class="modal-content" style="border-color: var(--accent-cyan); text-align: left; max-width: 480px;">
+            <button class="modal-close" onclick="closeCustomSyllabusModal()">&times;</button>
+            <h2 style="font-family: var(--font-headings); font-size: 1.6rem; color: var(--accent-cyan); text-align: center; margin-bottom: 0.5rem;">
+                ➕ Add Custom Concept
+            </h2>
+            <p style="color: var(--color-text-muted); font-size: 0.8rem; text-align: center; margin-bottom: 1.5rem;">
+                Insert a custom topic or subtopic directly into your study map.
+            </p>
+            
+            <div class="form-row" style="margin-bottom: 1rem;">
+                <label for="custom-syllabus-subject" style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.5rem;">Select Subject</label>
+                <select id="custom-syllabus-subject" style="width: 100%; background: var(--bg-base); border: 1px solid var(--border-glow); border-radius: var(--radius-sm); padding: 0.75rem; color: var(--color-text-main); font-family: var(--font-body); font-size: 0.85rem;" onchange="updateCustomSyllabusTopicDropdown()">
+                    <option value="Reasoning">Reasoning</option>
+                    <option value="Quantitative Aptitude">Quantitative Aptitude (Quant)</option>
+                    <option value="English">English</option>
+                    <option value="General Awareness">General Awareness (G.A.)</option>
+                </select>
+            </div>
+
+            <div class="form-row" style="margin-bottom: 1rem;">
+                <label for="custom-syllabus-topic-select" style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.5rem;">Select Parent Topic</label>
+                <select id="custom-syllabus-topic-select" style="width: 100%; background: var(--bg-base); border: 1px solid var(--border-glow); border-radius: var(--radius-sm); padding: 0.75rem; color: var(--color-text-main); font-family: var(--font-body); font-size: 0.85rem;" onchange="toggleCustomSyllabusNewTopicInput()">
+                    <!-- Populated dynamically -->
+                </select>
+            </div>
+
+            <div class="form-row" id="custom-syllabus-new-topic-row" style="margin-bottom: 1rem; display: none;">
+                <label for="custom-syllabus-new-topic" style="color: var(--accent-violet); font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.5rem;">Or Enter New Topic Name</label>
+                <input type="text" id="custom-syllabus-new-topic" placeholder="e.g. Clocks and Calendars, Cyclic Quadrilaterals..." style="width: 100%; background: var(--bg-base); border: 1px solid var(--border-glow); border-radius: var(--radius-sm); padding: 0.75rem; color: var(--color-text-main); font-family: var(--font-body); font-size: 0.85rem;">
+            </div>
+
+            <div class="form-row" style="margin-bottom: 1.5rem;">
+                <label for="custom-syllabus-subtopic" style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.5rem;">Concept / Subtopic Name</label>
+                <input type="text" id="custom-syllabus-subtopic" placeholder="e.g. Advanced repeating year tricks, Complementary angle proofs..." style="width: 100%; background: var(--bg-base); border: 1px solid var(--border-glow); border-radius: var(--radius-sm); padding: 0.75rem; color: var(--color-text-main); font-family: var(--font-body); font-size: 0.85rem;">
+            </div>
+
+            <button class="btn btn-primary" style="width: 100%; padding: 0.75rem;" onclick="submitCustomSyllabusItem()">ADD TO SYLLABUS</button>
         </div>
     </div>
 
@@ -2686,7 +2732,8 @@
                 error_log: 0,
                 error_feed: 0,
                 error_dna: 0
-            }
+            },
+            customSyllabusData: {}
         };
 
         // RUNTIME STATE
@@ -3004,6 +3051,27 @@
             }
             if (appState.telemetryEndpoint === undefined) {
                 appState.telemetryEndpoint = "";
+            }
+            
+            if (!appState.customSyllabusData) {
+                appState.customSyllabusData = {};
+            }
+            
+            // Merge custom syllabus data directly into the global SYLLABUS_DATA object
+            for (const [subject, topics] of Object.entries(appState.customSyllabusData)) {
+                if (!SYLLABUS_DATA[subject]) {
+                    SYLLABUS_DATA[subject] = {};
+                }
+                for (const [topic, subtopics] of Object.entries(topics)) {
+                    if (!SYLLABUS_DATA[subject][topic]) {
+                        SYLLABUS_DATA[subject][topic] = [];
+                    }
+                    subtopics.forEach(sub => {
+                        if (!SYLLABUS_DATA[subject][topic].includes(sub)) {
+                            SYLLABUS_DATA[subject][topic].push(sub);
+                        }
+                    });
+                }
             }
             
             saveStateToStorage();
@@ -3855,6 +3923,143 @@
                 emptyMsg.textContent = "No syllabus matches found.";
                 syllabusItemsList.appendChild(emptyMsg);
             }
+        }
+
+        // CUSTOM SYLLABUS DYNAMIC ACTIONS
+        function openCustomSyllabusModal() {
+            const modal = document.getElementById('custom-syllabus-modal');
+            if (modal) {
+                modal.style.setProperty('display', 'flex', 'important');
+                modal.style.setProperty('opacity', '1', 'important');
+                modal.style.setProperty('pointer-events', 'auto', 'important');
+                modal.style.setProperty('z-index', '9999', 'important');
+                modal.classList.add('active');
+                
+                // Initialize default subject selection and dropdowns
+                document.getElementById('custom-syllabus-subject').value = activeSyllabusTab || "Reasoning";
+                updateCustomSyllabusTopicDropdown();
+                document.getElementById('custom-syllabus-subtopic').value = "";
+                document.getElementById('custom-syllabus-new-topic').value = "";
+            }
+        }
+
+        function closeCustomSyllabusModal() {
+            const modal = document.getElementById('custom-syllabus-modal');
+            if (modal) {
+                modal.classList.remove('active');
+                modal.style.setProperty('display', 'none', 'important');
+                modal.style.setProperty('opacity', '0', 'important');
+                modal.style.setProperty('pointer-events', 'none', 'important');
+            }
+        }
+
+        function updateCustomSyllabusTopicDropdown() {
+            const subject = document.getElementById('custom-syllabus-subject').value;
+            const select = document.getElementById('custom-syllabus-topic-select');
+            if (!select) return;
+            
+            select.innerHTML = "";
+            
+            const topics = SYLLABUS_DATA[subject] || {};
+            for (const topic of Object.keys(topics)) {
+                const opt = document.createElement('option');
+                opt.value = topic;
+                opt.textContent = topic;
+                select.appendChild(opt);
+            }
+            
+            const newOpt = document.createElement('option');
+            newOpt.value = "__NEW__";
+            newOpt.textContent = "-- Create New Topic --";
+            select.appendChild(newOpt);
+            
+            toggleCustomSyllabusNewTopicInput();
+        }
+
+        function toggleCustomSyllabusNewTopicInput() {
+            const select = document.getElementById('custom-syllabus-topic-select');
+            const row = document.getElementById('custom-syllabus-new-topic-row');
+            if (select && row) {
+                if (select.value === "__NEW__") {
+                    row.style.display = "block";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        }
+
+        function submitCustomSyllabusItem() {
+            const subject = document.getElementById('custom-syllabus-subject').value;
+            const select = document.getElementById('custom-syllabus-topic-select').value;
+            const subtopicInput = document.getElementById('custom-syllabus-subtopic');
+            
+            let topicName = "";
+            if (select === "__NEW__") {
+                topicName = document.getElementById('custom-syllabus-new-topic').value.trim();
+            } else {
+                topicName = select.trim();
+            }
+            
+            const subtopicName = subtopicInput ? subtopicInput.value.trim() : "";
+            
+            if (!topicName) {
+                alert("Please enter a parent topic name.");
+                return;
+            }
+            if (!subtopicName) {
+                alert("Please enter the concept/subtopic name.");
+                return;
+            }
+            
+            const success = addCustomSyllabusItem(subject, topicName, subtopicName);
+            if (success) {
+                alert(`Successfully added concept "${subtopicName}" under "${topicName}"!`);
+                closeCustomSyllabusModal();
+            } else {
+                alert("Failed to add concept. Please verify inputs.");
+            }
+        }
+
+        function addCustomSyllabusItem(subject, topicName, subtopicName) {
+            subject = subject.trim();
+            topicName = topicName.trim();
+            subtopicName = subtopicName.trim();
+            
+            if (!subject || !topicName || !subtopicName) return false;
+            
+            // 1. Initialize customSyllabusData in appState if not exist
+            if (!appState.customSyllabusData) {
+                appState.customSyllabusData = {};
+            }
+            if (!appState.customSyllabusData[subject]) {
+                appState.customSyllabusData[subject] = {};
+            }
+            if (!appState.customSyllabusData[subject][topicName]) {
+                appState.customSyllabusData[subject][topicName] = [];
+            }
+            
+            // 2. Add to appState
+            if (!appState.customSyllabusData[subject][topicName].includes(subtopicName)) {
+                appState.customSyllabusData[subject][topicName].push(subtopicName);
+            }
+            
+            // 3. Add directly to active runtime SYLLABUS_DATA to avoid reload
+            if (!SYLLABUS_DATA[subject]) {
+                SYLLABUS_DATA[subject] = {};
+            }
+            if (!SYLLABUS_DATA[subject][topicName]) {
+                SYLLABUS_DATA[subject][topicName] = [];
+            }
+            if (!SYLLABUS_DATA[subject][topicName].includes(subtopicName)) {
+                SYLLABUS_DATA[subject][topicName].push(subtopicName);
+            }
+            
+            saveStateToStorage();
+            
+            // 4. Update dropdowns & UI
+            populateErrorSubjects();
+            renderSyllabus();
+            return true;
         }
 
         function toggleParentTopic(e, subjectKey, topicName, subtopics) {
