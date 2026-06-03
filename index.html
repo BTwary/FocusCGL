@@ -2325,46 +2325,324 @@
         // UPGRADED NESTED SYLLABUS DATASET (MAJOR TOPICS -> SUBTOPICS)
         const SYLLABUS_DATA = {
             'Reasoning': {
-                "Analogy & Verbal Classification": ["Number Analogies", "Letter/Word Associations", "Odd One Out (Words)", "Odd One Out (Numbers)"],
-                "Coding-Decoding": ["Letter to Letter Shifting", "Number to Symbol Substitution", "Sentence/Message Deciphering", "Mathematical Coded Rules"],
-                "Series Completion": ["Arithmetic Number Progressions", "Geometric Number Series", "Alphanumeric Series Patterns", "Continuous Letter Repeating Series"],
-                "Blood Relations": ["Family Tree Diagrams", "Coded Blood Relations", "Pointing/Introductory Problems"],
-                "Direction Sense Test": ["Compass Movements", "Distance & Shortest Path (Pythagoras)", "Shadow-Based Directions", "Degree & Angular Turns"],
-                "Venn Diagrams & Syllogism": ["Venn Diagrams (3 Circle Intersect)", "Syllogism (All/Some/No)", "Possibility Statements & Deductions"],
-                "Puzzles & Operators": ["Mathematical Operations (+ - * /)", "Linear Seating Arrangements", "Circular Seating Arrangements", "Ranking & Order Placement Problems"],
-                "Non-Verbal Reasoning": ["Paper Folding & Cutting", "Mirror & Water Images", "Embedded/Hidden Figures", "Incomplete Pattern Completion"],
-                "Critical & Analytical Reasoning": ["Statement & Assumptions", "Statement & Conclusions", "Course of Action Decisions", "Cause & Effect Relationships"]
+                "Analogy & Verbal Classification": [
+                    "Number Analogies (Arithmetic & Prime rules)", 
+                    "Letter/Word Associations", 
+                    "Odd One Out (Semantic Words)", 
+                    "Odd One Out (Mathematical Groups)",
+                    "Mixed Alphanumeric Analogies",
+                    "Semantic Classification & Pair Comparison"
+                ],
+                "Coding-Decoding": [
+                    "Letter to Letter Shifting (Direct/Reverse)", 
+                    "Number to Symbol Substitution", 
+                    "Sentence/Message Deciphering (Fictitious Language)", 
+                    "Mathematical Coded Rules (Operations & Multipliers)",
+                    "Matrix Coding & Visual Symbol Match"
+                ],
+                "Series Completion": [
+                    "Arithmetic Number Progressions", 
+                    "Geometric & Fibonacci Number Series", 
+                    "Alphanumeric & Letter Series Patterns", 
+                    "Continuous Letter Repeating Series (Patterns of 3/4/5)",
+                    "Double-Layer/Twin Alternative Series"
+                ],
+                "Blood Relations": [
+                    "Family Tree Diagrams & Relationships", 
+                    "Coded Blood Relations (A+B means A is father)", 
+                    "Pointing/Introductory Complex Statements",
+                    "Three-Generation Joint Family Equations"
+                ],
+                "Direction Sense Test": [
+                    "Compass Movements & Degree/Angular Turns", 
+                    "Distance & Shortest Path (Pythagorean Triplets)", 
+                    "Shadow-Based Direction Problems (Sunrise/Sunset)", 
+                    "Coded Directions & Compass Displacements"
+                ],
+                "Venn Diagrams & Syllogism": [
+                    "Venn Diagrams (Three-Circle Intersects)", 
+                    "Syllogism (All/Some/No Base Cases)", 
+                    "Possibility & Cannots Statements & Deductions",
+                    "Special Cases (Either-Or / Only a Few)",
+                    "Set-Theory Venn Word Problems (Intersects & Unions)"
+                ],
+                "Puzzles, Seating & Operators": [
+                    "Mathematical Operations (+ - * / Symbol Swap)", 
+                    "Linear Seating Arrangements (Single & Dual Row)", 
+                    "Circular Seating Arrangements (Facing In/Out)", 
+                    "Ranking & Order Placement Problems",
+                    "Matrix-Based Scheduling (Days/Colors/People)"
+                ],
+                "Dice, Cubes & Paper Folds": [
+                    "Open Dice Folding & Opposite Face Search",
+                    "Standard vs. Non-Standard Dice Rules",
+                    "Cube Cutting, Painting & Color Distribution",
+                    "Paper Folding & Precise Cutting Visuals"
+                ],
+                "Visual & Non-Verbal Reasoning": [
+                    "Mirror & Water Images (Figures & Text)", 
+                    "Embedded/Hidden Figure Identification", 
+                    "Incomplete Pattern Completion",
+                    "Grouping of Identical Figures & Matrices",
+                    "Counting Figures (Triangles, Squares, Rectangles, Lines)"
+                ],
+                "Critical & Analytical Reasoning": [
+                    "Statement & Assumptions (Implicit/Explicit)", 
+                    "Statement & Conclusions / Inferences", 
+                    "Course of Action Decisions & Resolutions", 
+                    "Cause & Effect Relationships",
+                    "Strong & Weak Arguments Validation"
+                ],
+                "Clocks & Calendars": [
+                    "Angle Between Clock Hands",
+                    "Reflex Angles & Slow/Fast Clock Errors",
+                    "Finding the Day of a Specific Date",
+                    "Repeating Year & Calendar Centenary Patterns"
+                ],
+                "Word Formation & Logical Order": [
+                    "Dictionary Arrangement & Logical Ordering",
+                    "Word Formation (Prefix, Suffix, Scrambled)",
+                    "Matrix Coding & Word Matrix Lookup"
+                ]
             },
             'Quantitative Aptitude': {
-                "Percentages, Fractions & Decimals": ["Percentage Basics", "Fraction to Percentage Table", "Successive Percentage Changes", "Election & Voting Problems", "Income, Expenditure & Savings"],
-                "Ratio, Proportion & Partnering": ["Basic Ratios & Proportions", "Mean/Third/Fourth Proportional", "Coin Value Problems", "Partnership & Profit Sharing", "Ages Problems"],
-                "Average & Interest": ["Weighted Average & Groups", "Simple Interest (SI) Formulas", "Compound Interest (CI) Calculations", "CI-SI Differences (2 & 3 Years)", "Installment Calculations"],
-                "Profit, Loss & Discount": ["Marked Price & Discount Ratio", "Disinterested / Dishonest Shopkeeper Cheat", "Successive Discounts", "Equivalent Discount Formulas", "Article-Based CP & SP Tricks"],
-                "Mixture & Alligation": ["Two-Fluid Replacements", "Alligation Cross Method", "Repetitive Replacement Formulas"],
-                "Time & Work, Pipes & Cisterns": ["Efficiency Ratios", "Alternate Day Work Schedules", "Pipes Filling & Leakage", "Wages Distribution"],
-                "Speed, Time & Distance": ["Relative Speed Concepts", "Trains Crossing Platforms/Trains", "Boats and Streams Speed", "Circular Track Races", "Escalator Movement Problems"],
-                "Algebra & Surds": ["Linear & Quadratic Equations", "Standard Algebraic Identities", "Indices & Surds Simplification", "Roots of Quadratic Equations"],
-                "Geometry": ["Triangle Properties & Congruence", "Circle Theorems (Chords, Tangents)", "Angles in Regular Polygons", "Similar Triangles Properties"],
-                "Trigonometry & Mensuration": ["Trigonometric Ratios & Identities", "Heights & Distances (Shadows)", "2D Areas (Triangles, Circles)", "3D Volumes (Prisms, Cones, Cylinders)"]
+                "Number System & Divisibility": [
+                    "Divisibility Rules (Prime & Composite Numbers)",
+                    "Unit Digit & Last Two Digits Calculation",
+                    "Factors (Count, Sum, Product, Odd/Even)",
+                    "Remainder Theorems (Euler, Fermat, Chinese Remainder)",
+                    "LCM & HCF Word Problems & Formulas",
+                    "Arithmetic & Geometric Progressions (AP & GP Series)"
+                ],
+                "Percentages & Fractions": [
+                    "Percentage Basics & Fraction Conversion Table", 
+                    "Successive Percentage Changes (Net Change Formula)", 
+                    "Election & Voting Distribution Problems", 
+                    "Income, Expenditure & Savings Allocations",
+                    "Tax, Population & Machine Depreciation Formulas"
+                ],
+                "Ratio, Proportion & Partnering": [
+                    "Basic Ratios & Proportional Splits", 
+                    "Mean, Third, Fourth Proportional Calculations", 
+                    "Coin Value & Denomination Word Problems", 
+                    "Partnership & Profit Sharing (Time vs Capital)", 
+                    "Ages & Ratio Shifts Over Time"
+                ],
+                "Average & Interest": [
+                    "Weighted Average & Class/Group Splits", 
+                    "Simple Interest (SI) Formulas & Multipliers", 
+                    "Compound Interest (CI) Calculations (Half-Yearly/Quarterly)", 
+                    "CI-SI Differences (2 & 3 Years Standard Formulas)", 
+                    "Installments in SI & CI (Equated Payments)"
+                ],
+                "Profit, Loss & Discount": [
+                    "Marked Price & Discount Ratio (CP to MP Relation)", 
+                    "Dishonest Shopkeeper Cheating Percentage Tricks", 
+                    "Successive Discounts & Single Equivalent Discount", 
+                    "Article-Based CP & SP Equivalency Rules",
+                    "True Discount & Banker's Discount Concepts"
+                ],
+                "Mixture & Alligation": [
+                    "Two-Fluid Replacements & Concentration Changes", 
+                    "Alligation Cross Method & Applications", 
+                    "Repetitive Replacement Formulas (1 - x/V)^n"
+                ],
+                "Time & Work, Pipes & Cisterns": [
+                    "Efficiency Ratios & Capacity Calculations", 
+                    "Alternate Day Work Schedules", 
+                    "Pipes Filling, Emptying & Leakage Times", 
+                    "Wages Distribution Based on Work Done",
+                    "Contractor and Men-Days Formulas (M1 D1 H1 / W1)"
+                ],
+                "Speed, Time & Distance": [
+                    "Relative Speed Concepts (Same/Opposite Directions)", 
+                    "Trains Crossing Platforms, Poles & Other Trains", 
+                    "Boats and Streams (Upstream vs Downstream)", 
+                    "Circular Track Races & Meetings Points", 
+                    "Escalator Movement Problems",
+                    "Average Speed Calculations & Stoppage Delays"
+                ],
+                "Algebra & Surds": [
+                    "Linear & Quadratic Equations (Roots & Coefficients)", 
+                    "Standard Algebraic Identities (Square & Cube Forms)", 
+                    "Advanced Identity a^3+b^3+c^3-3abc and its forms", 
+                    "Indices & Surds Simplification (Rationalization)",
+                    "Maximum and Minimum of Quadratic Expressions"
+                ],
+                "Geometry (Lines, Triangles & Circles)": [
+                    "Triangle Properties, Congruence & Similarity", 
+                    "Triangle Centers (Centroid, Incenter, Circumcenter, Orthocenter)",
+                    "Circle Theorems (Angles in segment, Cyclic Quadrilaterals)", 
+                    "Tangents (Direct & Transverse Common Tangent formulas)",
+                    "Polygon Angles (Interior, Exterior & Diagonal Count)"
+                ],
+                "Trigonometry": [
+                    "Trigonometric Ratios & Pythogorean Identities", 
+                    "Complementary & Supplementary Angle Rules",
+                    "Heights & Distances (Angle of Elevation & Depression)",
+                    "Maximum and Minimum of Trigonometric Expressions"
+                ],
+                "Mensuration 2D & 3D": [
+                    "2D Area & Perimeter (Rhombus, Trapezium, Parallelogram)",
+                    "Circular Paths, Sectors & Ring Areas",
+                    "3D Volumes (Prisms, Cylinders, Cones, Spheres)",
+                    "Advanced 3D Shapes (Frustum, Pyramids, Tetrahedron)",
+                    "Melting & Recasting Solids Conversion Formulas"
+                ],
+                "Data Interpretation (DI)": [
+                    "Tabular DI & Calculation Shortcuts",
+                    "Bar Charts & Histogram Interpretation",
+                    "Pie Charts (Degree to Percentage Conversions)",
+                    "Line Graphs & Cumulative Data Trends"
+                ],
+                "Statistics & Probability": [
+                    "Mean, Median & Mode Calculations for Grouped Data",
+                    "Standard Deviation & Variance Formulas",
+                    "Basic Probability Rules & Permutation/Combination basics"
+                ]
             },
             'English': {
-                "Spotting Errors": ["Subject-Verb Agreement Rules", "Tenses & Conditionals", "Preposition Usage Errors", "Pronoun Case Errors", "Article Placement (A, An, The)"],
-                "Sentence Improvement": ["Phrasal Verbs Accuracy", "Modifier Placement Rules", "Parallel Structure Integrity", "Redundancy Detection"],
-                "Vocabulary Drill": ["Synonyms (High Frequency)", "Antonyms (High Frequency)", "Spelling Mistakes Detection"],
-                "One-Word Substitution": ["Government Systems Vocabulary", "Phobias & Manias", "Personalities & Professional Words"],
-                "Idioms & Phrases": ["Verb-Based Idioms", "Color-Based Idioms", "Animal-Based Idioms"],
-                "Active/Passive Voice": ["Tense Conversion Rules", "Imperative Sentence Passive", "Interrogative Sentence Passive"],
-                "Direct/Indirect Narration": ["Reporting Verb Tense Conversion", "Pronoun Shift Rules", "Time & Place Indicator Shifts"],
-                "Reading Comprehension & Cloze": ["Cloze Test Strategies", "Reading Speed Drills", "Para Jumbles Logical Alignment"]
+                "Spotting Errors": [
+                    "Subject-Verb Agreement Rules & Exceptions", 
+                    "Tenses & Conditional Sentences (Types 0, 1, 2, 3)", 
+                    "Preposition Usage & Fixed Preposition Traps", 
+                    "Pronoun Case, Agreement & Relative Pronoun rules", 
+                    "Article Placement (A, An, The & Omission of Articles)",
+                    "Noun Classification (Countable vs Uncountable exceptions)",
+                    "Adjective/Adverb Degree Shifts & Comparison rules"
+                ],
+                "Sentence Improvement & Blanks": [
+                    "Phrasal Verbs Accuracy & Contextual Fits", 
+                    "Modifier Placement & Dangling Participles", 
+                    "Parallel Structure Integrity", 
+                    "Redundancy, Superfluous Words & Double Negatives",
+                    "Gerunds vs Infinitives rules"
+                ],
+                "Vocabulary Drill": [
+                    "Synonyms (High Frequency CGL List)", 
+                    "Antonyms (High Frequency CGL List)", 
+                    "Spelling Mistakes Detection & Rules",
+                    "Confused Words (Homonyms & Homophones)"
+                ],
+                "One-Word Substitution": [
+                    "Government Systems & Rule Vocabulary (cracy)", 
+                    "Phobias & Manias Classification", 
+                    "Personalities, Professions & Behavioral Words",
+                    "Words for Places & Scientific Study Fields (ology)",
+                    "Group Names (Animals & Collective Nouns)"
+                ],
+                "Idioms & Phrases": [
+                    "Verb & Action-Based Idioms", 
+                    "Color & Symbol-Based Idioms", 
+                    "Animal & Nature-Based Idioms",
+                    "Body Parts & Food-Related Expressions"
+                ],
+                "Voice & Narration": [
+                    "Active to Passive Voice Tense Conversion Rules", 
+                    "Imperative Sentence Passive Construction", 
+                    "Interrogative Sentence Passive Rules",
+                    "Direct to Indirect Narration (Tense & Pronoun shifts)",
+                    "Time & Place Indicator Shifts (now -> then, this -> that)"
+                ],
+                "Reading Comprehension": [
+                    "Theme, Main Idea & Tone Identification",
+                    "Direct Fact-Based Information Searching",
+                    "Inference & Vocabulary Contextual Meanings"
+                ],
+                "Cloze Test & Para Jumbles": [
+                    "Cloze Test Contextual Blank Fillers",
+                    "Para Jumbles Logical Alignment (Noun-Pronoun links)",
+                    "Chronological & Transition-Word Ordering"
+                ]
             },
             'General Awareness': {
-                "History of India": ["Ancient India (Harappa, Buddhism, Maurya)", "Medieval India (Mughals, Delhi Sultanate)", "Modern India (1857 Revolt, Gandhi Era, Congress)"],
-                "Geography & Ecology": ["Indian Rivers & Tributaries", "Soil Types & Agriculture", "Atmospheric Layers & Climate", "National Parks & Biosphere Reserves"],
-                "Indian Polity": ["Important Articles (1-395)", "Parts & Schedules of Constitution", "President, Parliament & Judiciary Structure", "Constitutional Amendments"],
-                "Basic Economics": ["Inflation, GDP & National Income", "Monetary Policy & RBI Roles", "Demand and Supply Curves", "Five-Year Plans History"],
-                "General Sciences": ["Physics Laws, Units & Dimensions", "Chemistry Common Compounds & Elements", "Biology Human Systems & Diseases", "Nutrition & Vitamins G.K."],
-                "Computer Basics": ["Hardware Components & Memory Types", "MS Excel & MS Word Keyboard Shortcuts", "Basics of Cyber Security & Internet Protocols"],
-                "Static GK & Current Affairs": ["Folk & Classical Dances of India", "National Festivals & Temples", "Awards & Honours (Current & Past)", "Government Welfare Schemes"]
+                "Ancient & Medieval History": [
+                    "Indus Valley Civilization Sites & Key Discoveries",
+                    "Vedic Literature, Epics & Religious Sects (Buddhism, Jainism)",
+                    "Maurya, Gupta & Harsha Dynasties",
+                    "Delhi Sultanate (Dynasties, Administration, Monuments)",
+                    "Mughal Empire (Rulers, Battles, Art & Architecture)",
+                    "Maratha & South Indian Kingdoms (Chola, Vijayanagara)"
+                ],
+                "Modern History of India": [
+                    "Advent of Europeans & East India Company Rule",
+                    "1857 Revolt (Centers, Leaders & Consequences)",
+                    "Indian National Congress (Sessions, Resolutions, Leaders)",
+                    "Gandhian Era Movements (Non-Cooperation, Civil Disobedience, Quit India)",
+                    "Governor-Generals, Viceroys & British Acts",
+                    "Social-Religious Reform Movements & Famous Personalities"
+                ],
+                "Physical & Indian Geography": [
+                    "Solar System, Earth Rotation, Revolution & Lat/Long",
+                    "Atmospheric Layers, Winds & World Climate Zones",
+                    "Indian River Systems (Himalayan & Peninsular Tributaries)",
+                    "Soil Types, Crops & Irrigation in India",
+                    "Mountains, Peaks, Passes & Plateaus",
+                    "Minerals, Industries & Energy Resources",
+                    "National Parks, Biosphere Reserves & Ramsar Sites"
+                ],
+                "Indian Polity & Constitution": [
+                    "Sources of Indian Constitution & Schedules",
+                    "Preamble, Union, Citizenship & Fundamental Rights",
+                    "Directive Principles (DPSP) & Fundamental Duties",
+                    "President, Vice-President & Parliament Structure",
+                    "Judiciary Structure (Supreme Court, High Courts, Lower Courts)",
+                    "Constitutional Amendments & Important Articles",
+                    "Panchayati Raj, Municipalities & Lokpal"
+                ],
+                "Economics & Financial Markets": [
+                    "Microeconomics Basics (Utility, Demand, Supply, Market Types)",
+                    "Macroeconomics (GDP, National Income & Inflation)",
+                    "Monetary Policy, RBI Roles & Fiscal Policy",
+                    "Five-Year Plans & NITI Aayog Functions",
+                    "Banking Sector Reforms & Budget Vocabulary"
+                ],
+                "Physics Essentials": [
+                    "Units, Dimensions & Measurement Devices",
+                    "Newton's Laws, Work, Energy & Power",
+                    "Gravitation, Escape Velocity & Satellites",
+                    "Light (Reflection, Refraction, Lenses, Total Internal Reflection)",
+                    "Sound, Wave Motion & Electromagnetic Spectrum",
+                    "Electricity, Magnetism & Electronics Basics"
+                ],
+                "Chemistry Essentials": [
+                    "Atomic Structure, Isotopes & Periodic Table Groups",
+                    "Chemical Reactions, Redox & Catalysts",
+                    "Acids, Bases & Salts with Daily Life Examples",
+                    "Metals, Non-metals, Metallurgy & Alloys",
+                    "Carbon & Organic Compounds, Hydrocarbons",
+                    "Industrial Chemistry (Glass, Cement, Fertilizers, Polymers)"
+                ],
+                "Biology & Health Sciences": [
+                    "Cell Structure, Division & Plant/Animal Kingdom",
+                    "Human Anatomy (Digestive, Respiratory, Circulatory systems)",
+                    "Nervous System, Hormones & Human Brain",
+                    "Nutrition, Vitamins, Minerals & Deficiency Diseases",
+                    "Infectious Diseases (Bacterial, Viral, Fungal, Protozoan)",
+                    "Genetics, Biotechnology & Environmental Ecology"
+                ],
+                "Computer Proficiency (Tier 2 GK)": [
+                    "Computer Architecture, CPU & Memory (RAM/ROM)",
+                    "Operating System Types & Software Categories",
+                    "Keyboard Shortcuts in MS Excel, Word & PowerPoint",
+                    "Computer Network Topologies, Protocols (TCP/IP) & Cyber Security",
+                    "Logic Gates, Binary Conversions & File Formats"
+                ],
+                "Static GK & Art-Culture": [
+                    "Classical & Folk Dances of India with Eminent Artists",
+                    "Musical Instruments & Prominent Exponents",
+                    "UNESCO World Heritage Sites & Famous Temples of India",
+                    "National Festivals, Folk Art & Traditional Paintings",
+                    "Sports Trophies, Players count, Terms & Olympic History",
+                    "International Organizations, Headquarters & Summits",
+                    "Books, Authors, Awards & Honours (Nobel, Padma, Khel Ratna)"
+                ],
+                "Current Affairs & Schemes": [
+                    "Major Government Welfare Schemes (Central & State)",
+                    "Union Budget Highlights & Economic Survey Data",
+                    "Military Exercises, Science-Tech & Space Missions",
+                    "National & International Summits, Appointments & Obituaries"
+                ]
             }
         };
 
