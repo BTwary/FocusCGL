@@ -2516,19 +2516,19 @@
             }
         }
 
-        const adminTelemetryModal = document.getElementById('admin-telemetry-modal');
-        
         function openAdminTelemetryModal() {
-            if (adminTelemetryModal) {
+            const modal = document.getElementById('admin-telemetry-modal');
+            if (modal) {
                 updateAdminDashboardUI();
-                adminTelemetryModal.classList.add('active');
+                modal.classList.add('active');
                 trackFeatureUsage('error_dna');
             }
         }
         
         function closeAdminTelemetryModal() {
-            if (adminTelemetryModal) {
-                adminTelemetryModal.classList.remove('active');
+            const modal = document.getElementById('admin-telemetry-modal');
+            if (modal) {
+                modal.classList.remove('active');
             }
         }
         
@@ -2632,6 +2632,14 @@
                     }
                 });
             }
+
+            // Fallback keyboard shortcut: Ctrl + Shift + A (or Ctrl + Shift + T) to open unconditionally
+            window.addEventListener('keydown', (e) => {
+                if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a' || e.key === 'T' || e.key === 't')) {
+                    e.preventDefault();
+                    openAdminTelemetryModal();
+                }
+            });
         });
 
         // 1. STATE & STORAGE MANAGEMENT
