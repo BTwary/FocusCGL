@@ -2036,6 +2036,175 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* STUDY-SURVIVAL FEATURES STYLES */
+        .survival-overlay-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(10, 15, 30, 0.82);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .survival-overlay-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .rest-day-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px dashed var(--accent-gold);
+            color: var(--accent-gold);
+            border-radius: var(--radius-sm);
+            padding: 0.25rem 0.6rem;
+            font-size: 0.7rem;
+            font-family: var(--font-body);
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-left: 0.8rem;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .rest-day-btn:hover {
+            background: hsla(42, 100%, 55%, 0.15);
+            box-shadow: 0 0 10px hsla(42, 100%, 55%, 0.2);
+            transform: scale(1.05);
+        }
+
+        .rest-day-btn:disabled {
+            background: rgba(255, 255, 255, 0.02);
+            border-color: var(--border-glow);
+            color: var(--color-text-muted);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .bridge-breathing-ring {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.05);
+            box-shadow: 0 0 20px hsla(180, 100%, 50%, 0.2);
+            margin: 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 4s ease-in-out, border-color 0.5s, box-shadow 0.5s;
+        }
+
+        .bridge-breathing-text {
+            font-family: var(--font-headings);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* STUDY-SURVIVAL GAMIFICATION STYLES */
+        .mission-step-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .mission-step-card:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+        .mission-step-card.completed {
+            border-color: var(--accent-success);
+            background: hsla(145, 80%, 45%, 0.08);
+        }
+        .mission-step-card.completed .step-num {
+            background: var(--accent-success);
+            color: #000;
+        }
+        .mission-step-card.active {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px hsla(180, 100%, 50%, 0.2);
+            animation: pulse-border 2s infinite;
+        }
+        @keyframes pulse-border {
+            0%, 100% { border-color: var(--accent-cyan); }
+            50% { border-color: rgba(0, 240, 255, 0.3); }
+        }
+        .step-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-family: var(--font-headings);
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: background 0.3s;
+        }
+        .step-label {
+            font-family: var(--font-headings);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+        .step-status {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+        }
+        .achievement-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-sm);
+            padding: 0.5rem 0.75rem;
+            transition: all 0.2s ease;
+        }
+        .achievement-badge.unlocked {
+            border-color: var(--accent-gold);
+            background: hsla(42, 100%, 55%, 0.06);
+            box-shadow: 0 0 10px hsla(42, 100%, 55%, 0.1);
+        }
+        .achievement-badge.locked {
+            opacity: 0.5;
+        }
+        .badge-icon {
+            font-size: 1.25rem;
+        }
+        .badge-name {
+            font-family: var(--font-headings);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .badge-desc {
+            font-size: 0.65rem;
+            color: var(--color-text-muted);
+        }
     </style>
 </head>
 <body>
@@ -2066,14 +2235,22 @@
                         <div class="stat-val" id="distractions-killed-count" style="font-size: 0.95rem; font-family: var(--font-headings); font-weight: 700; color: #fff;">0</div>
                     </div>
                 </div>
-                <div class="stat-badge gold">
+                <div class="stat-badge gold" style="position: relative;">
                     <span class="icon">🔥</span>
                     <div>
                         <div class="text-label">Habit Streak</div>
                         <div class="stat-val" id="streak-count">0 Days</div>
                     </div>
+                    <button id="btn-take-rest-day" class="rest-day-btn" onclick="requestRestDay()">Rest Day</button>
                 </div>
-                <div class="stat-badge">
+                <div class="stat-badge" style="border-color: var(--accent-gold); box-shadow: 0 0 15px hsla(42, 100%, 55%, 0.15);" title="Your Current Level and Focus XP">
+                    <span class="icon">🏆</span>
+                    <div>
+                        <div class="text-label" id="level-title-display" style="color: var(--accent-gold); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Level 1: Beginner</div>
+                        <div class="stat-val" id="xp-display" style="font-size: 0.95rem; font-family: var(--font-headings); font-weight: 700; color: #fff;">0 / 100 XP</div>
+                    </div>
+                </div>
+                <div class="stat-badge" id="pyq-badge" title="Solve PYQs to increase rating">
                     <span class="icon">✨</span>
                     <div>
                         <div class="text-label">Total PYQs</div>
@@ -2085,7 +2262,36 @@
 
         <!-- WRAPPER FOR STUDY DASHBOARD VIEW -->
         <div id="view-study-dashboard">
-            <!-- LEFT COLUMN: SPRINT TIMER & ATOMIC HABITS CHECKLIST -->
+            <!-- TODAY'S MISSION DASHBOARD (Phase 1 & 2) -->
+            <div class="glass-card card-mission" style="grid-column: 1 / -1; border-color: var(--accent-cyan); box-shadow: 0 0 25px hsla(180, 100%, 50%, 0.1); margin-bottom: 1rem;">
+                <div class="card-title-row" style="margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div class="card-title" style="color: var(--accent-cyan); font-size: 1.3rem; display: flex; align-items: center; gap: 8px; margin: 0;">
+                        🎯 Today's Focus Mission
+                        <span class="badge-tag" id="mission-progress-tag" style="background: var(--accent-cyan); color: #000; font-weight: 700;">Progress: 0/5</span>
+                    </div>
+                    <button class="btn btn-primary" id="btn-start-session" onclick="startMissionsSession()" style="padding: 0.5rem 1.25rem; font-size: 0.85rem; font-weight: 700; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet)); border: none; color: #000;">START TODAY'S SESSION</button>
+                </div>
+                
+                <!-- Mission Steps Grid -->
+                <div class="mission-steps-grid" id="mission-steps-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                    <!-- Dynamically populated by JS -->
+                </div>
+
+                <!-- Custom Progress Bar -->
+                <div style="background: rgba(255, 255, 255, 0.05); height: 10px; border-radius: 5px; overflow: hidden; width: 100%; position: relative;">
+                    <div id="mission-progress-bar" style="background: linear-gradient(90deg, var(--accent-cyan), var(--accent-violet)); height: 100%; width: 0%; transition: width 0.4s ease;"></div>
+                </div>
+
+                <!-- Achievements Row (Phase 2) -->
+                <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-glow); padding-top: 1.25rem;">
+                    <h4 style="font-family: var(--font-headings); font-size: 0.95rem; color: var(--accent-gold); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px;">🏆 Focus Achievements & Badges</h4>
+                    <div id="achievements-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem;">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEFT COLUMN: SPRINT TIMER, ERROR INTEL, & ATOMIC HABITS CHECKLIST -->
         <div style="display: flex; flex-direction: column; gap: 2rem;">
             
             <!-- FOCUS SPRINT TIMER -->
@@ -2157,112 +2363,24 @@
                         <button class="btn btn-primary" id="btn-timer-start-pause">START SPRINT</button>
                         <button class="btn btn-secondary" id="btn-timer-reset">ABANDON</button>
                     </div>
-                </div>
-            </div>
 
-            <!-- ATOMIC HABITS & CHECKLIST -->
-            <div class="glass-card">
-                <div class="card-title">⚡ Daily Atomic Habit Tracker</div>
-                
-                <div class="checklist-module">
-                    <!-- The Two-Minute Rule Active Incrementor -->
-                    <div class="habit-incrementer">
-                        <div class="incrementer-title">
-                            <span class="title-text">Two-Minute Rule: PYQs Solved</span>
-                            <span class="sub-text">Break the friction: solve at least 1 today.</span>
+                    <!-- QUICK RESET WIDGET (Phase 7) -->
+                    <div class="quick-reset-widget" style="margin-top: 1.25rem; border-top: 1px dashed var(--border-glow); padding-top: 1rem; text-align: center;">
+                        <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                            🧠 Feeling Distracted? Try a Quick Mind Reset
                         </div>
-                        <div class="incrementer-controls">
-                            <button class="inc-btn" onclick="adjustQuestions(-5)">-5</button>
-                            <button class="inc-btn" onclick="adjustQuestions(-1)">-1</button>
-                            <span class="counter-val" id="today-questions-solved">0</span>
-                            <button class="inc-btn" onclick="adjustQuestions(1)">+1</button>
-                            <button class="inc-btn" onclick="adjustQuestions(5)">+5</button>
+                        <div id="quick-reset-actions" style="display: flex; gap: 0.5rem; justify-content: center;">
+                            <button class="btn btn-secondary" onclick="startQuickReset()" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; border-color: var(--accent-cyan); color: var(--accent-cyan); background: hsla(180, 100%, 50%, 0.02);">🧘 1 Minute Breathing</button>
                         </div>
-                    </div>
-
-                    <!-- Visual Routine Checklist -->
-                    <div class="timeline-container" id="timeline-container">
-                        <!-- Loaded dynamically -->
-                    </div>
-                    <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem; border-color: var(--accent-cyan); color: var(--accent-cyan);" onclick="openCustomHabitModal()">
-                        ➕ ADD CUSTOM HABIT
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- RIGHT COLUMN: SCRATCHPAD, SYLLABUS, COOKIE JAR -->
-        <div style="display: flex; flex-direction: column; gap: 2rem;">
-            
-            <!-- THE ACTIVE SCRATCHPAD (DISTRACTION LOCKER) -->
-            <div class="glass-card card-scratchpad">
-                <div class="card-title">
-                    📝 Active Scratchpad
-                    <span class="badge-tag" id="scratchpad-tag">NO ACTIVE SPRINT</span>
-                </div>
-                
-                <div class="scratchpad-module">
-                    <div class="instruction-box">
-                        <strong>Brain-dump intrusive thoughts instantly:</strong> Did a movie idea, message urge, or chore pop into your head? Type it below and hit Enter. It will be captured and <strong>locked</strong> until your Focus Sprint is fully complete.
-                    </div>
-                    
-                    <div class="scratchpad-input-area">
-                        <input type="text" id="scratchpad-input" placeholder="Type distraction and hit Enter..." onkeypress="handleScratchpadKey(event)">
-                        <button class="btn-add-distraction" onclick="captureDistraction()">DUMP</button>
-                    </div>
-
-                    <div class="captured-container">
-                        <div class="captured-header">
-                            <span>Captured Thoughts</span>
-                            <span class="status-badge" id="scratchpad-status">Unlocked</span>
-                        </div>
-                        <ul class="distraction-list" id="distraction-list-items">
-                            <!-- Populated by JS -->
-                        </ul>
-                        <div class="distraction-placeholder" id="distraction-placeholder">
-                            <span>🧘 Your mind is completely clear.</span>
-                            <span style="font-size: 0.75rem;">Intrusive thoughts will appear here once dumped.</span>
+                        <div id="quick-reset-status" style="font-size: 0.8rem; color: var(--accent-cyan); margin-top: 0.25rem; display: none; font-weight: 700; letter-spacing: 0.5px;">
+                            <span id="quick-reset-breath-instruction">Inhale... 🌬️</span> (<span id="quick-reset-timer">60s</span>)
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- GOGGINS MOTIVATIONAL COOKIE JAR -->
-            <div class="glass-card card-cookie-jar">
-                <div class="card-title">🍪 Goggins-Style Cookie Jar</div>
-                
-                <div class="cookie-jar-module">
-                    <div class="cookie-jar-main-row">
-                        <div class="cookie-jar-illustration">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8 8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8m-3 3a1.5 1.5 0 0 0-1.5 1.5A1.5 1.5 0 0 0 9 10a1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 9 7m6 0a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 15 7m-3 6a3 3 0 0 0-3 3h6a3 3 0 0 0-3-3z"/>
-                            </svg>
-                        </div>
-                        <div class="cookie-jar-description">
-                            When you hit a mental wall, get frustrated by a question, or want to quit, reach into the cookie jar to consume a random hard victory from your past.
-                        </div>
-                    </div>
-                    
-                    <div class="cookie-jar-controls">
-                        <button class="btn btn-gold" onclick="openCookieJar()">REACH INTO COOKIE JAR</button>
-                        <button class="btn btn-secondary" onclick="openAddVictoryModal()">ADD A WINNING RECORD</button>
-                    </div>
-
-                    <!-- BROWSE ALL VICTORY RECORDS LIST -->
-                    <div class="victory-manager-container">
-                        <div class="victory-manager-title">
-                            <span>📜 Browse Your Triumph Jar</span>
-                            <span id="victory-records-count" style="color: var(--color-text-muted); font-size: 0.75rem;">(0 wins)</span>
-                        </div>
-                        <ul class="victory-manager-list" id="victory-manager-list-items">
-                            <!-- Populated by JS -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 🧬 ERROR INTELLIGENCE SYSTEM CARD -->
-            <div class="glass-card card-error-intel">
+            <!-- 🧬 ERROR INTELLIGENCE SYSTEM CARD (Phase 3 Promoted) -->
+            <div class="glass-card card-error-intel" style="border-color: var(--accent-violet); box-shadow: 0 0 25px hsla(270, 90%, 65%, 0.1);">
                 <div class="card-title">🧬 Error Intelligence System</div>
                 
                 <div class="error-intel-module">
@@ -2347,23 +2465,231 @@
                                 <p style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.25rem;">Ranks consistency, PYQ accuracy, & revision hygiene</p>
                             </div>
                             
-                            <h3 style="font-family: var(--font-headings); font-size: 1rem; color: var(--accent-violet); border-bottom: 1px solid var(--border-glow); padding-bottom: 0.25rem; margin-top: 0.25rem;">🧬 Mistake DNA Analysis</h3>
-                            <div id="dna-meters-list">
-                                <!-- Populated dynamically -->
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem; text-align: left;">
+                                <div>
+                                    <h3 style="font-family: var(--font-headings); font-size: 0.95rem; color: var(--accent-violet); border-bottom: 1px solid var(--border-glow); padding-bottom: 0.25rem;">📊 Top Mistake Patterns</h3>
+                                    <div id="dna-meters-list" style="margin-top: 0.5rem;">
+                                        <!-- Populated dynamically -->
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 style="font-family: var(--font-headings); font-size: 0.95rem; color: var(--accent-danger); border-bottom: 1px solid var(--border-glow); padding-bottom: 0.25rem;">⚠️ Weak Area Dashboard</h3>
+                                    <ul class="roi-list" id="roi-weaknesses-list" style="margin-top: 0.5rem; list-style: none; padding: 0;">
+                                        <!-- Populated dynamically -->
+                                    </ul>
+                                </div>
                             </div>
                             
-                            <div class="coach-insight-box" id="coach-insight-text">
-                                💡 <strong>Coach Insight:</strong> Log at least 5 errors to generate DNA breakdown.
+                            <div class="coach-insight-box" id="coach-insight-text" style="margin-top: 1rem; background: rgba(255,255,255,0.02); border-left: 3px solid var(--accent-cyan); padding: 0.75rem; font-size: 0.8rem;">
+                                💡 <strong>Coach Insight:</strong> Log at least 3 errors to generate DNA breakdown.
                             </div>
-                            
-                            <h3 style="font-family: var(--font-headings); font-size: 1rem; color: var(--accent-cyan); border-bottom: 1px solid var(--border-glow); padding-bottom: 0.25rem; margin-top: 0.5rem;">🎯 ROI Target Weaknesses</h3>
-                            <ul class="roi-list" id="roi-weaknesses-list">
-                                <!-- Populated dynamically -->
-                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- ATOMIC HABITS & CHECKLIST -->
+            <div class="glass-card">
+                <div class="card-title">⚡ Daily Atomic Habit Tracker</div>
+                
+                <div class="checklist-module">
+                    <!-- The Two-Minute Rule Active Incrementor -->
+                    <div class="habit-incrementer">
+                        <div class="incrementer-title">
+                            <span class="title-text">Two-Minute Rule: PYQs Solved</span>
+                            <span class="sub-text">Break the friction: solve at least 1 today.</span>
+                        </div>
+                        <div class="incrementer-controls">
+                            <button class="inc-btn" onclick="adjustQuestions(-5)">-5</button>
+                            <button class="inc-btn" onclick="adjustQuestions(-1)">-1</button>
+                            <span class="counter-val" id="today-questions-solved">0</span>
+                            <button class="inc-btn" onclick="adjustQuestions(1)">+1</button>
+                            <button class="inc-btn" onclick="adjustQuestions(5)">+5</button>
+                        </div>
+                    </div>
+
+                    <!-- Visual Routine Checklist -->
+                    <div class="timeline-container" id="timeline-container">
+                        <!-- Loaded dynamically -->
+                    </div>
+                    <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem; border-color: var(--accent-cyan); color: var(--accent-cyan);" onclick="openCustomHabitModal()">
+                        ➕ ADD CUSTOM HABIT
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: PROGRESS, COUNTER, SCRATCHPAD, SYLLABUS, COOKIE JAR -->
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
+            
+            <!-- WEEKLY ANALYTICS & SCOREBOARD (Phase 4) -->
+            <div class="glass-card card-analytics" style="border-color: var(--accent-violet); box-shadow: 0 0 25px hsla(270, 90%, 65%, 0.1);">
+                <div class="card-title" style="color: var(--accent-violet);">📊 Focus Score & Weekly Report</div>
+                <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 1rem; margin-top: 0.75rem; text-align: left;">
+                    <div class="focus-score-box" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-glow); border-radius: var(--radius-md); padding: 0.75rem; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <span class="text-label" style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-text-muted);">CGL Focus Rating</span>
+                        <span id="analytics-focus-score" style="font-family: var(--font-headings); font-size: 2.2rem; font-weight: 700; color: var(--accent-violet); margin: 0.25rem 0;">80/100</span>
+                        <span id="analytics-focus-trend" style="font-size: 0.75rem; color: var(--accent-success); font-weight: 700;">This Week ➔ Stable</span>
+                    </div>
+                    <div class="analytics-metrics-box" style="display: flex; flex-direction: column; gap: 0.4rem; justify-content: center;">
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.2rem;">
+                            <span style="font-size: 0.75rem; color: var(--color-text-muted);">⏱️ Sprints Time:</span>
+                            <span id="weekly-sprint-time" style="font-size: 0.75rem; font-weight: 700; color: #fff;">0h</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.2rem;">
+                            <span style="font-size: 0.75rem; color: var(--color-text-muted);">🎯 PYQs Solved:</span>
+                            <span id="weekly-pyqs-solved" style="font-size: 0.75rem; font-weight: 700; color: #fff;">0</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.2rem;">
+                            <span style="font-size: 0.75rem; color: var(--color-text-muted);">🧬 Errors Logged:</span>
+                            <span id="weekly-mistakes-logged" style="font-size: 0.75rem; font-weight: 700; color: #fff;">0</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.2rem;">
+                            <span style="font-size: 0.75rem; color: var(--color-text-muted);">🏆 Mastered:</span>
+                            <span id="weekly-concepts-mastered" style="font-size: 0.75rem; font-weight: 700; color: #fff;">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SSC TARGETS & PROGRESS MONITOR (Phase 6) -->
+            <div class="glass-card card-ssc" style="border-color: var(--accent-gold); box-shadow: 0 0 25px hsla(42, 100%, 55%, 0.1);">
+                <div class="card-title" style="color: var(--accent-gold); display: flex; justify-content: space-between; align-items: center;">
+                    <span>🏆 SSC CGL Exam Target Control</span>
+                    <span id="ssc-countdown" style="font-size: 0.75rem; background: var(--accent-gold); color: #000; padding: 2px 8px; border-radius: 4px; font-weight: 700;">--- Days Left</span>
+                </div>
+                
+                <!-- Daily Target Checkboxes -->
+                <div style="margin: 0.75rem 0; text-align: left;">
+                    <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-gold); font-weight: 700; margin-bottom: 0.4rem;">📋 CGL Daily Targets</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; background: rgba(255,255,255,0.01); padding: 0.5rem; border-radius: 6px; border: 1px solid var(--border-glow);">
+                        <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--color-text-muted); cursor: pointer;">
+                            <input type="checkbox" id="target-vocab" onchange="toggleDailyTarget('vocab')" style="accent-color: var(--accent-gold);"> Vocab Chores
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--color-text-muted); cursor: pointer;">
+                            <input type="checkbox" id="target-reasoning" onchange="toggleDailyTarget('reasoning')" style="accent-color: var(--accent-gold);"> Reasoning Sprint
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--color-text-muted); cursor: pointer;">
+                            <input type="checkbox" id="target-math" onchange="toggleDailyTarget('math')" style="accent-color: var(--accent-gold);"> Math Practice
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--color-text-muted); cursor: pointer;">
+                            <input type="checkbox" id="target-general" onchange="toggleDailyTarget('general')" style="accent-color: var(--accent-gold);"> GS Revision
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Syllabus completion progress bars -->
+                <div style="text-align: left;">
+                    <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-text-muted); font-weight: 700; margin-bottom: 0.4rem;">📈 Subject completion rates</div>
+                    <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 0.1rem;">
+                                <span>Reasoning</span>
+                                <span id="completion-reasoning">0%</span>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.05); height: 5px; border-radius: 2.5px; overflow: hidden;">
+                                <div id="bar-completion-reasoning" style="background: var(--accent-cyan); height: 100%; width: 0%; transition: width 0.3s;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 0.1rem;">
+                                <span>Quant Aptitude</span>
+                                <span id="completion-quant">0%</span>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.05); height: 5px; border-radius: 2.5px; overflow: hidden;">
+                                <div id="bar-completion-quant" style="background: var(--accent-gold); height: 100%; width: 0%; transition: width 0.3s;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 0.1rem;">
+                                <span>English Language</span>
+                                <span id="completion-english">0%</span>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.05); height: 5px; border-radius: 2.5px; overflow: hidden;">
+                                <div id="bar-completion-english" style="background: var(--accent-violet); height: 100%; width: 0%; transition: width 0.3s;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 0.1rem;">
+                                <span>General Awareness</span>
+                                <span id="completion-gs">0%</span>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.05); height: 5px; border-radius: 2.5px; overflow: hidden;">
+                                <div id="bar-completion-gs" style="background: var(--accent-danger); height: 100%; width: 0%; transition: width 0.3s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- THE ACTIVE SCRATCHPAD (DISTRACTION LOCKER) -->
+            <div class="glass-card card-scratchpad">
+                <div class="card-title">
+                    📝 Active Scratchpad
+                    <span class="badge-tag" id="scratchpad-tag">NO ACTIVE SPRINT</span>
+                </div>
+                
+                <div class="scratchpad-module">
+                    <div class="instruction-box">
+                        <strong>Brain-dump intrusive thoughts instantly:</strong> Did a movie idea, message urge, or chore pop into your head? Type it below and hit Enter. It will be captured and <strong>locked</strong> until your Focus Sprint is fully complete.
+                    </div>
+                    
+                    <div class="scratchpad-input-area">
+                        <input type="text" id="scratchpad-input" placeholder="Type distraction and hit Enter..." onkeypress="handleScratchpadKey(event)">
+                        <button class="btn-add-distraction" onclick="captureDistraction()">DUMP</button>
+                    </div>
+
+                    <div class="captured-container">
+                        <div class="captured-header">
+                            <span>Captured Thoughts</span>
+                            <span class="status-badge" id="scratchpad-status">Unlocked</span>
+                        </div>
+                        <ul class="distraction-list" id="distraction-list-items">
+                            <!-- Populated by JS -->
+                        </ul>
+                        <div class="distraction-placeholder" id="distraction-placeholder">
+                            <span>🧘 Your mind is completely clear.</span>
+                            <span style="font-size: 0.75rem;">Intrusive thoughts will appear here once dumped.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GOGGINS MOTIVATIONAL COOKIE JAR -->
+            <div class="glass-card card-cookie-jar">
+                <div class="card-title">🍪 Goggins-Style Cookie Jar</div>
+                
+                <div class="cookie-jar-module">
+                    <div class="cookie-jar-main-row">
+                        <div class="cookie-jar-illustration">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8 8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8m-3 3a1.5 1.5 0 0 0-1.5 1.5A1.5 1.5 0 0 0 9 10a1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 9 7m6 0a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 15 7m-3 6a3 3 0 0 0-3 3h6a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </div>
+                        <div class="cookie-jar-description">
+                            When you hit a mental wall, get frustrated by a question, or want to quit, reach into the cookie jar to consume a random hard victory from your past.
+                        </div>
+                    </div>
+                    
+                    <div class="cookie-jar-controls">
+                        <button class="btn btn-gold" onclick="openCookieJar()">Need Strength? [Open Cookie Jar]</button>
+                        <button class="btn btn-secondary" onclick="openAddVictoryModal()">ADD A WINNING RECORD</button>
+                    </div>
+
+                    <!-- BROWSE ALL VICTORY RECORDS LIST -->
+                    <div class="victory-manager-container">
+                        <div class="victory-manager-title">
+                            <span>📜 Browse Your Triumph Jar</span>
+                            <span id="victory-records-count" style="color: var(--color-text-muted); font-size: 0.75rem;">(0 wins)</span>
+                        </div>
+                        <ul class="victory-manager-list" id="victory-manager-list-items">
+                            <!-- Populated by JS -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
 
             <!-- CGL SYLLABUS ACCORDION CHECKLIST -->
             <div class="glass-card card-syllabus">
@@ -2546,8 +2872,8 @@
             </p>
             
             <div class="form-row">
-                <label for="input-victory-desc">What is your victory?</label>
-                <input type="text" id="input-victory-desc" placeholder="e.g. Solved 30 Quant questions in one go today without checking my phone.">
+                <label for="input-victory-desc">What is your victory story?</label>
+                <textarea id="input-victory-desc" placeholder="e.g. Wanted to quit after 3 wrong answers. Stayed another 20 minutes and solved the toughest geometry question from 2024 CGL." style="width: 100%; height: 100px; background: var(--bg-base); border: 1px solid var(--border-glow); border-radius: var(--radius-sm); padding: 0.75rem; color: var(--color-text-main); font-family: var(--font-body); font-size: 0.85rem; resize: none;"></textarea>
             </div>
 
             <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;" onclick="saveNewVictory()">LOCK IT IN THE JAR</button>
@@ -2745,6 +3071,40 @@
             </div>
 
             <button class="btn btn-primary" style="width: 100%; padding: 0.75rem;" onclick="submitCustomHabit()">ADD TO TIMELINE</button>
+        </div>
+    </div>
+
+    <!-- FORCED REST OVERLAY MODAL -->
+    <div id="forced-rest-modal" class="survival-overlay-modal">
+        <div class="modal-content" style="border-color: var(--accent-danger); box-shadow: 0 0 40px hsla(350, 85%, 55%, 0.25);">
+            <h2 style="font-family: var(--font-headings); font-size: 1.8rem; color: var(--accent-danger); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                🛑 Cognitive Fatigue Detected
+            </h2>
+            <p style="font-size: 1rem; color: var(--color-text-main); margin-bottom: 1.5rem;">
+                You have logged multiple consecutive mistakes. Your brain is running on empty.
+            </p>
+            <div class="rest-countdown" id="rest-timer-display" style="font-family: var(--font-headings); font-size: 3rem; font-weight: 700; color: #fff; margin: 1.5rem 0;">05:00</div>
+            <p class="goggins-motivate" style="font-style: italic; color: var(--accent-gold); font-size: 0.95rem; margin-top: 1rem;">
+                "Step away from the desk. Breathe. Re-align."
+            </p>
+        </div>
+    </div>
+
+    <!-- DOPAMINE BRIDGE OVERLAY MODAL -->
+    <div id="dopamine-bridge-modal" class="survival-overlay-modal">
+        <div class="modal-content" style="border-color: var(--accent-cyan); box-shadow: 0 0 40px hsla(180, 100%, 50%, 0.25);">
+            <h2 style="font-family: var(--font-headings); font-size: 1.8rem; color: var(--accent-cyan); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                🌊 Dopamine Bridge
+            </h2>
+            <p style="font-size: 1rem; color: var(--color-text-main); margin-bottom: 1rem;">
+                Sprint complete. Let your heart rate and dopamine settle.
+            </p>
+            
+            <div class="bridge-breathing-ring" id="bridge-ring">
+                <span id="bridge-breath-instruction" class="bridge-breathing-text" style="font-size: 1.2rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Inhale</span>
+            </div>
+            
+            <div class="bridge-timer" id="bridge-timer-display" style="font-family: var(--font-headings); font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); margin-top: 1rem;">60s remaining</div>
         </div>
     </div>
 
