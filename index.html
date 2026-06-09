@@ -2205,182 +2205,1430 @@
             font-size: 0.65rem;
             color: var(--color-text-muted);
         }
+
+        /* ========================================== */
+        /* 🎨 PREMIUM SIDEBAR & GRID LAYOUT OVERHAUL */
+        /* ========================================== */
+        body {
+            background-color: var(--bg-base);
+            background-image: 
+                radial-gradient(circle at 10% 20%, hsla(270, 90%, 65%, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, hsla(180, 100%, 50%, 0.06) 0%, transparent 45%);
+            background-attachment: fixed;
+            color: var(--color-text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            overflow-x: hidden;
+        }
+
+        .app-layout {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* 🚪 SIDEBAR STYLING */
+        .sidebar {
+            width: 270px;
+            background: rgba(10, 14, 24, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-right: 1px solid var(--border-glow);
+            padding: 2rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-shrink: 0;
+            overflow-y: auto;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-brand-title {
+            font-family: var(--font-headings);
+            font-size: 1.35rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .sidebar-brand-sub {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            flex: 1;
+        }
+
+        .sidebar-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.65rem 0.85rem;
+            color: var(--color-text-muted);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu-item:hover, .sidebar-menu-item.active {
+            color: var(--color-text-main);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .sidebar-menu-item.active {
+            border-left-color: var(--accent-cyan);
+            background: rgba(0, 242, 254, 0.04);
+            color: var(--accent-cyan);
+        }
+
+        .sidebar-menu-item .menu-icon {
+            font-size: 1.05rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* ⏱️ SIDEBAR TIMER WIDGET */
+        .sidebar-timer-widget {
+            background: hsla(222, 25%, 15%, 0.4);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.15rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .sidebar-timer-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .sidebar-timer-circle {
+            position: relative;
+            width: 84px;
+            height: 84px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar-timer-text {
+            font-family: var(--font-headings);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .sidebar-timer-btn {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));
+            border: none;
+            color: #000;
+            padding: 0.45rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .sidebar-timer-btn:hover {
+            box-shadow: 0 0 15px hsla(180, 100%, 50%, 0.25);
+        }
+
+        /* 📜 SIDEBAR QUOTE BANNER */
+        .sidebar-quote {
+            border-top: 1px solid var(--border-glow);
+            padding-top: 0.85rem;
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+            position: relative;
+        }
+
+        .sidebar-quote-marks {
+            color: var(--accent-success);
+            font-size: 1.5rem;
+            line-height: 0;
+            font-family: serif;
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            font-weight: 900;
+        }
+
+        .sidebar-quote-text {
+            padding-left: 0.95rem;
+            display: block;
+        }
+
+        /* 🖥️ MAIN CONTENT AREA */
+        .main-content {
+            flex: 1;
+            padding: 2rem 2.25rem;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* 📊 DASHBOARD LAYOUT & CARDS */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            border-bottom: 1px solid var(--border-glow);
+            padding-bottom: 1.25rem;
+        }
+
+        .welcome-block h2 {
+            font-family: var(--font-headings);
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.2rem;
+        }
+
+        .welcome-block p {
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+        }
+
+        .header-badges-row {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            flex-wrap: wrap;
+        }
+
+        .header-profile-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-cyan);
+            object-fit: cover;
+        }
+
+        /* Stats Row */
+        .dashboard-stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 1rem;
+        }
+
+        .dashboard-stat-card {
+            background: rgba(17, 24, 39, 0.4);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .dashboard-stat-card:hover {
+            border-color: rgba(255, 255, 255, 0.08);
+            background: rgba(17, 24, 39, 0.6);
+            transform: translateY(-1px);
+        }
+
+        .stat-card-icon-wrapper {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+        }
+
+        .stat-card-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .stat-card-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.15rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .stat-card-value {
+            font-family: var(--font-headings);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.1;
+        }
+
+        .stat-card-trend {
+            font-size: 0.65rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            margin-top: 0.15rem;
+        }
+
+        .trend-up {
+            color: var(--accent-success);
+        }
+
+        .trend-down {
+            color: var(--accent-danger);
+        }
+
+        /* Main Grid Wrapper */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        @media (max-width: 1100px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dashboard-main-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .dashboard-side-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* 📊 SVG CHARTS & GAUGES */
+        .gauge-container {
+            position: relative;
+            width: 180px;
+            height: 100px;
+            margin: 0.5rem auto 0;
+        }
+
+        .gauge-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .gauge-track {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.03);
+            stroke-width: 12;
+            stroke-linecap: round;
+        }
+
+        .gauge-fill {
+            fill: none;
+            stroke: url(#gauge-gradient);
+            stroke-width: 12;
+            stroke-linecap: round;
+            stroke-dasharray: 251.32; /* Half circle circumference = pi * r = 3.14159 * 80 */
+            stroke-dashoffset: 251.32;
+            transition: stroke-dashoffset 0.8s ease-out;
+        }
+
+        .gauge-text-wrapper {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .gauge-score {
+            font-family: var(--font-headings);
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .gauge-max {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+        }
+
+        .gauge-status {
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 0.15rem;
+        }
+
+        /* Donut Chart SVG */
+        .donut-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto;
+        }
+
+        .donut-center-value {
+            font-family: var(--font-headings);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.1;
+        }
+
+        .donut-center-label {
+            font-size: 0.6rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 1px;
+        }
+
+        /* Line Chart SVG */
+        .line-chart-container {
+            position: relative;
+            width: 100%;
+            height: 130px;
+            margin-top: 0.5rem;
+        }
+
+        .chart-grid-line {
+            stroke: rgba(255, 255, 255, 0.02);
+            stroke-width: 1;
+        }
+
+        .chart-axis-text {
+            fill: var(--color-text-muted);
+            font-size: 9px;
+            font-family: var(--font-body);
+        }
+
+        .chart-line-path {
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .chart-area-path {
+            opacity: 0.03;
+        }
+
+        .chart-dot {
+            stroke-width: 2.5;
+            fill: var(--bg-base) !important;
+            cursor: pointer;
+            r: 4.5;
+            transition: r 0.2s ease, stroke-width 0.2s ease;
+        }
+
+        .chart-dot:hover {
+            r: 6;
+            stroke-width: 3.5;
+        }
+
+        /* ⏱️ DEDICATED FOCUS SPRINT VIEW */
+        .focus-sprint-screen {
+            max-width: 620px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100%;
+        }
+
+        .sprint-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .sprint-back-btn {
+            background: rgba(17, 24, 39, 0.5);
+            border: 1px solid var(--border-glow);
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-main);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .sprint-back-btn:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: var(--accent-cyan);
+        }
+
+        .sprint-title-block {
+            flex: 1;
+            padding-left: 12px;
+        }
+
+        .sprint-title-block h3 {
+            font-family: var(--font-headings);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+        }
+
+        .sprint-title-block p {
+            color: var(--color-text-muted);
+            font-size: 0.75rem;
+            margin: 0;
+        }
+
+        /* Radial Timer Ring container */
+        .radial-timer-container {
+            position: relative;
+            width: 290px;
+            height: 290px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0.5rem 0;
+        }
+
+        .radial-timer-svg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .radial-timer-bg {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.015);
+            stroke-width: 5;
+        }
+
+        .radial-timer-progress {
+            fill: none;
+            stroke: url(#timer-ring-gradient);
+            stroke-width: 5;
+            stroke-linecap: round;
+            stroke-dasharray: 879.64; /* 2 * pi * r = 2 * 3.14159 * 140 */
+            stroke-dashoffset: 0;
+            transform: rotate(-90deg);
+            transform-origin: 150px 150px;
+            transition: stroke-dashoffset 0.1s linear, stroke 0.3s ease;
+        }
+
+        .radial-timer-head-cap {
+            fill: var(--accent-cyan);
+            stroke: var(--bg-base);
+            stroke-width: 1.5;
+            filter: drop-shadow(0 0 6px var(--accent-cyan));
+            transition: cx 0.1s linear, cy 0.1s linear;
+        }
+
+        .radial-timer-inner {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 5;
+        }
+
+        .radial-timer-inner-brain {
+            font-size: 2.2rem;
+            color: var(--accent-cyan);
+            filter: drop-shadow(0 0 8px hsla(180, 100%, 50%, 0.3));
+            margin-bottom: 0.25rem;
+        }
+
+        .radial-timer-inner-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .radial-timer-inner-time {
+            font-family: var(--font-headings);
+            font-size: 4rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 0.15rem;
+        }
+
+        .radial-timer-inner-sub {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .blocking-pill {
+            background: rgba(16, 185, 129, 0.04);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            color: var(--accent-success);
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Controls under the timer ring */
+        .sprint-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sprint-control-btn {
+            background: none;
+            border: 1px solid var(--border-glow);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.1rem;
+        }
+
+        .sprint-control-btn:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .sprint-control-btn.btn-play {
+            width: 62px;
+            height: 62px;
+            background: var(--accent-cyan);
+            border: none;
+            color: #000;
+            font-size: 1.4rem;
+            box-shadow: 0 0 15px hsla(180, 100%, 50%, 0.25);
+        }
+
+        .sprint-control-btn.btn-play:hover {
+            background: var(--accent-cyan-hover);
+            box-shadow: 0 0 20px hsla(180, 100%, 50%, 0.4);
+            transform: scale(1.04);
+        }
+
+        .sprint-control-label {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            margin-top: 5px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Progress Card under Controls */
+        .sprint-progress-card {
+            width: 100%;
+            background: rgba(17, 24, 39, 0.4);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 480px) {
+            .sprint-progress-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sprint-progress-col {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .sprint-progress-col:first-child {
+            border-right: 1px solid var(--border-glow);
+            padding-right: 1.25rem;
+        }
+
+        @media (max-width: 480px) {
+            .sprint-progress-col:first-child {
+                border-right: none;
+                border-bottom: 1px solid var(--border-glow);
+                padding-right: 0;
+                padding-bottom: 1.25rem;
+            }
+        }
+
+        .sprint-progress-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .up-next-block {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 2px;
+        }
+
+        .up-next-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(139, 92, 246, 0.08);
+            color: var(--accent-violet);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .up-next-name {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.1;
+        }
+
+        .up-next-duration {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+        }
+
+        .sprint-dots-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .sprint-dot {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 1.5px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--color-text-muted);
+        }
+
+        .sprint-dot.done {
+            background: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+            color: #000;
+        }
+
+        .sprint-dot.active {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            box-shadow: 0 0 8px var(--accent-cyan);
+        }
+        
+        .recent-act-item {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            font-size: 0.75rem;
+        }
+        
+        .recent-act-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        
+        .recent-act-xp {
+            font-size: 0.7rem;
+            color: var(--accent-success);
+            font-weight: 700;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+    
     </style>
 </head>
 <body>
 
-    <div class="app-container">
-        <!-- HEADER -->
-        <header>
-            <div class="branding">
-                <h1>FocusCGL</h1>
-                <p>An Anti-Distraction Engine built for SSC CGL Aspirants</p>
-            </div>
-            <div class="main-nav-tabs">
-                <button class="nav-tab active" id="btn-view-study" onclick="switchMainView('study')">📊 STUDY DASHBOARD</button>
-                <button class="nav-tab" id="btn-view-calm" onclick="switchMainView('calm')">🧘 CALM</button>
-            </div>
-            <div class="header-stats">
-                <div class="stat-badge" style="border-color: var(--accent-cyan); box-shadow: 0 0 15px hsla(180, 100%, 50%, 0.15);" title="Total Focused Time Accumulated">
-                    <span class="icon">⏱️</span>
-                    <div>
-                        <div class="text-label" style="color: var(--accent-cyan); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Time Saved</div>
-                        <div class="stat-val" id="time-saved-count" style="font-size: 0.95rem; font-family: var(--font-headings); font-weight: 700; color: #fff;">0m</div>
-                    </div>
-                </div>
-                <div class="stat-badge" style="border-color: var(--accent-violet); box-shadow: 0 0 15px hsla(270, 90%, 65%, 0.15);" title="Total Intrusive Thoughts Defeated">
-                    <span class="icon">🛡️</span>
-                    <div>
-                        <div class="text-label" style="color: var(--accent-violet); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Intrusions Killed</div>
-                        <div class="stat-val" id="distractions-killed-count" style="font-size: 0.95rem; font-family: var(--font-headings); font-weight: 700; color: #fff;">0</div>
-                    </div>
-                </div>
-                <div class="stat-badge gold" style="position: relative;">
-                    <span class="icon">🔥</span>
-                    <div>
-                        <div class="text-label">Habit Streak</div>
-                        <div class="stat-val" id="streak-count">0 Days</div>
-                    </div>
-                    <button id="btn-take-rest-day" class="rest-day-btn" onclick="requestRestDay()">Rest Day</button>
-                </div>
-                <div class="stat-badge" style="border-color: var(--accent-gold); box-shadow: 0 0 15px hsla(42, 100%, 55%, 0.15);" title="Your Current Level and Focus XP">
-                    <span class="icon">🏆</span>
-                    <div>
-                        <div class="text-label" id="level-title-display" style="color: var(--accent-gold); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Level 1: Beginner</div>
-                        <div class="stat-val" id="xp-display" style="font-size: 0.95rem; font-family: var(--font-headings); font-weight: 700; color: #fff;">0 / 100 XP</div>
-                    </div>
-                </div>
-                <div class="stat-badge" id="pyq-badge" title="Solve PYQs to increase rating">
-                    <span class="icon">✨</span>
-                    <div>
-                        <div class="text-label">Total PYQs</div>
-                        <div class="stat-val" id="total-questions-solved">0</div>
-                    </div>
+
+    <div class="app-layout">
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:28px; height:28px; color: var(--accent-cyan); filter: drop-shadow(0 0 6px var(--accent-cyan));">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <div>
+                    <div class="sidebar-brand-title">FocusCGL</div>
+                    <div class="sidebar-brand-sub">Focus. Practice. Progress.</div>
                 </div>
             </div>
-        </header>
-
-        <!-- WRAPPER FOR STUDY DASHBOARD VIEW -->
-        <div id="view-study-dashboard">
-            <!-- TODAY'S MISSION DASHBOARD (Phase 1 & 2) -->
-            <div class="glass-card card-mission" style="grid-column: 1 / -1; border-color: var(--accent-cyan); box-shadow: 0 0 25px hsla(180, 100%, 50%, 0.1); margin-bottom: 1rem;">
-                <div class="card-title-row" style="margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                    <div class="card-title" style="color: var(--accent-cyan); font-size: 1.3rem; display: flex; align-items: center; gap: 8px; margin: 0;">
-                        🎯 Today's Focus Mission
-                        <span class="badge-tag" id="mission-progress-tag" style="background: var(--accent-cyan); color: #000; font-weight: 700;">Progress: 0/5</span>
-                    </div>
-                    <button class="btn btn-primary" id="btn-start-session" onclick="startMissionsSession()" style="padding: 0.5rem 1.25rem; font-size: 0.85rem; font-weight: 700; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet)); border: none; color: #000;">START TODAY'S SESSION</button>
-                </div>
-                
-                <!-- Mission Steps Grid -->
-                <div class="mission-steps-grid" id="mission-steps-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
-                    <!-- Dynamically populated by JS -->
-                </div>
-
-                <!-- Custom Progress Bar -->
-                <div style="background: rgba(255, 255, 255, 0.05); height: 10px; border-radius: 5px; overflow: hidden; width: 100%; position: relative;">
-                    <div id="mission-progress-bar" style="background: linear-gradient(90deg, var(--accent-cyan), var(--accent-violet)); height: 100%; width: 0%; transition: width 0.4s ease;"></div>
-                </div>
-
-                <!-- Achievements Row (Phase 2) -->
-                <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-glow); padding-top: 1.25rem;">
-                    <h4 style="font-family: var(--font-headings); font-size: 0.95rem; color: var(--accent-gold); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px;">🏆 Focus Achievements & Badges</h4>
-                    <div id="achievements-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem;">
-                        <!-- Loaded dynamically -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- LEFT COLUMN: SPRINT TIMER, ERROR INTEL, & ATOMIC HABITS CHECKLIST -->
-        <div style="display: flex; flex-direction: column; gap: 2rem;">
             
-            <!-- FOCUS SPRINT TIMER -->
-            <div class="glass-card card-timer">
-                <div class="card-title-row">
-                    <div class="card-title">
-                        ⏱️ Sectional Focus Sprint
-                        <span class="badge-tag" id="timer-status-tag">READY</span>
-                    </div>
-                    <button class="settings-toggle-btn" title="Customize Timer Settings" onclick="toggleTimerSettings()">
-                        ⚙️
-                    </button>
+            <ul class="sidebar-menu">
+                <li class="sidebar-menu-item active" id="menu-item-dashboard" onclick="switchSidebarView('dashboard')">
+                    <span class="menu-icon">📊</span> Dashboard
+                </li>
+                <li class="sidebar-menu-item" id="menu-item-focus-sprint" onclick="switchSidebarView('focus-sprint')">
+                    <span class="menu-icon">⏱️</span> Focus Sprint
+                </li>
+                <li class="sidebar-menu-item" id="menu-item-syllabus" onclick="switchSidebarView('syllabus')">
+                    <span class="menu-icon">🗺️</span> Syllabus Map
+                </li>
+                <li class="sidebar-menu-item" id="menu-item-pyq-bank" onclick="switchSidebarView('pyq-bank')">
+                    <span class="menu-icon">📖</span> PYQ Solver
+                </li>
+                <li class="sidebar-menu-item" id="menu-item-error-intel" onclick="switchSidebarView('error-intel')">
+                    <span class="menu-icon">🧬</span> Error Intel
+                </li>
+                <li class="sidebar-menu-item" id="menu-item-notes" onclick="switchSidebarView('notes')">
+                    <span class="menu-icon">📝</span> Scratchpad
+                </li>
+                <li class="sidebar-menu-item" id="menu-item-calm" onclick="switchSidebarView('calm')">
+                    <span class="menu-icon">🧘</span> StudyCalm
+                </li>
+            </ul>
+            
+            <!-- SIDEBAR TODAY'S FOCUS WIDGET -->
+            <div class="sidebar-timer-widget">
+                <div class="sidebar-timer-title">Today's Focus</div>
+                <div class="sidebar-timer-circle">
+                    <svg viewBox="0 0 100 100" style="width: 100%; height: 100%; transform: rotate(-90deg); position: absolute; top:0; left:0;">
+                        <circle cx="50" cy="50" r="44" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="4"></circle>
+                        <circle cx="50" cy="50" r="44" fill="none" stroke="var(--accent-cyan)" stroke-width="4" stroke-dasharray="276.46" stroke-dashoffset="0" id="sidebar-progress-ring"></circle>
+                    </svg>
+                    <div class="sidebar-timer-text" id="sidebar-timer-text">15:00</div>
                 </div>
+                <button class="sidebar-timer-btn" onclick="switchSidebarView('focus-sprint')">▶ Start Sprint</button>
+            </div>
+            
+            <!-- SIDEBAR QUOTE BANNER -->
+            <div class="sidebar-quote">
+                <span class="sidebar-quote-marks">“</span>
+                <span class="sidebar-quote-text">Discipline is choosing between what you want now and what you want most.</span>
+            </div>
+        </aside>
 
-                <!-- TIMER DYNAMIC CONFIG PANEL -->
-                <div class="timer-settings-panel" id="timer-settings-panel">
-                    <h3 style="font-family: var(--font-headings); font-size: 1rem; color: var(--accent-cyan);">⚙️ Custom Sprint Setup</h3>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
-                        <div class="settings-form-row">
-                            <label for="custom-timer-duration">Duration (Mins)</label>
-                            <input type="number" id="custom-timer-duration" min="1" max="180" value="15">
-                        </div>
-                        <div class="settings-form-row">
-                            <label for="custom-timer-subject">Subject/Topic</label>
-                            <input type="text" id="custom-timer-subject" placeholder="e.g. Algebra Practice" value="Reasoning">
-                        </div>
+        <!-- MAIN PANEL -->
+        <main class="main-content">
+            <!-- VIEW 1: DASHBOARD -->
+            <div id="view-dashboard" class="dashboard-main-col" style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%;">
+                <!-- Header greeting -->
+                <div class="dashboard-header">
+                    <div class="welcome-block">
+                        <h2 id="greeting-title">Good evening, Bhaskar! 👋</h2>
+                        <p>Stay consistent today. Success is built in focused minutes.</p>
                     </div>
-                    <button class="btn btn-primary" style="padding: 0.6rem 1rem; font-size: 0.85rem; border-radius: var(--radius-sm);" onclick="applyCustomTimerSettings()">
-                        APPLY SETTINGS
-                    </button>
+                    
+                    <div class="header-badges-row">
+                        <!-- Streak badge -->
+                        <div class="stat-badge gold" style="position: relative;" title="Streak">
+                            <span class="icon">🔥</span>
+                            <div>
+                                <div class="text-label" style="font-size: 0.65rem; color: var(--color-text-muted); text-transform: uppercase; margin-bottom: 2px;">Streak</div>
+                                <div class="stat-val" id="streak-count" style="font-size: 0.95rem; font-family: var(--font-headings); font-weight: 700; color: #fff;">0 Days</div>
+                            </div>
+                            <button id="btn-take-rest-day" class="rest-day-btn" onclick="requestRestDay()">Rest Day</button>
+                        </div>
+                        <!-- Level/XP Badge -->
+                        <div class="stat-badge" style="border-color: var(--accent-gold); box-shadow: 0 0 15px hsla(42, 100%, 55%, 0.15); display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 0.5rem 1rem;" title="Level & XP">
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <span class="icon" style="font-size: 1.1rem;">🏆</span>
+                                <div class="text-label" id="level-title-display" style="color: var(--accent-gold); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; margin: 0;">Level 1: Beginner</div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px; width: 100%;">
+                                <div style="background: rgba(255, 255, 255, 0.05); height: 6px; border-radius: 3px; overflow: hidden; width: 80px; position: relative;">
+                                    <div id="xp-progress-bar" style="background: linear-gradient(90deg, var(--accent-gold), var(--accent-cyan)); height: 100%; width: 0%;"></div>
+                                </div>
+                                <span class="stat-val" id="xp-display" style="font-size: 0.75rem; color: #fff; font-family: var(--font-headings); font-weight: 700;">0/100 XP</span>
+                            </div>
+                        </div>
+                        <!-- User Avatar -->
+                        <img src="https://avatars.githubusercontent.com/u/9919?v=4" class="header-profile-avatar" id="user-profile-avatar" onerror="this.src='https://avatars.githubusercontent.com/u/9919?v=4'">
+                    </div>
                 </div>
                 
-                <div class="timer-module">
-                    <div class="timer-presets">
-                        <button class="preset-btn active" data-time="15" data-subject="Reasoning">
-                            <span>Reasoning</span>
-                            <span class="label-time">15m</span>
-                        </button>
-                        <button class="preset-btn" data-time="15" data-subject="Quantitative Aptitude">
-                            <span>Math</span>
-                            <span class="label-time">15m</span>
-                        </button>
-                        <button class="preset-btn" data-time="15" data-subject="General Awareness">
-                            <span>G.A.</span>
-                            <span class="label-time">15m</span>
-                        </button>
-                        <button class="preset-btn" data-time="15" data-subject="English">
-                            <span>English</span>
-                            <span class="label-time">15m</span>
-                        </button>
-                        <button class="preset-btn special-pomo" data-time="20" data-subject="Atomic micro-sprint">
-                            ⏱️ <span>Atomic Micro-Sprint</span>
-                            <span class="label-time">20m</span>
-                        </button>
-                    </div>
-
-                    <div class="circular-timer">
-                        <svg>
-                            <circle class="track" cx="120" cy="120" r="110"></circle>
-                            <circle class="progress" id="timer-ring" cx="120" cy="120" r="110"></circle>
-                        </svg>
-                        <div class="timer-display">
-                            <div class="timer-numbers" id="time-left">15:00</div>
-                            <div class="timer-label" id="current-subject-label">Reasoning</div>
+                <!-- Stats row -->
+                <div class="dashboard-stats-row">
+                    <!-- TIME SAVED -->
+                    <div class="dashboard-stat-card">
+                        <div class="stat-card-icon-wrapper" style="background: rgba(0, 242, 254, 0.1); color: var(--accent-cyan); border: 1px solid rgba(0, 242, 254, 0.2);">⏱️</div>
+                        <div class="stat-card-info">
+                            <div class="stat-card-label">Time Saved</div>
+                            <div class="stat-card-value" id="time-saved-count">0m</div>
+                            <div class="stat-card-trend trend-up">↑ 18% <span style="color: var(--color-text-muted); font-weight: normal; font-size: 0.65rem;">This Week</span></div>
                         </div>
                     </div>
-
-                    <div class="timer-controls">
-                        <button class="btn btn-primary" id="btn-timer-start-pause">START SPRINT</button>
-                        <button class="btn btn-secondary" id="btn-timer-reset">ABANDON</button>
+                    <!-- PYQS SOLVED -->
+                    <div class="dashboard-stat-card">
+                        <div class="stat-card-icon-wrapper" style="background: rgba(16, 185, 129, 0.1); color: var(--accent-success); border: 1px solid rgba(16, 185, 129, 0.2);">✓</div>
+                        <div class="stat-card-info">
+                            <div class="stat-card-label">PYQs Solved</div>
+                            <div class="stat-card-value" id="total-questions-solved">0</div>
+                            <div class="stat-card-trend trend-up">↑ 24% <span style="color: var(--color-text-muted); font-weight: normal; font-size: 0.65rem;">Total</span></div>
+                        </div>
                     </div>
+                    <!-- INTRUSIONS KILLED -->
+                    <div class="dashboard-stat-card">
+                        <div class="stat-card-icon-wrapper" style="background: rgba(139, 92, 246, 0.1); color: var(--accent-violet); border: 1px solid rgba(139, 92, 246, 0.2);">🛡️</div>
+                        <div class="stat-card-info">
+                            <div class="stat-card-label">Intrusions Killed</div>
+                            <div class="stat-card-value" id="distractions-killed-count">0</div>
+                            <div class="stat-card-trend trend-down">↓ 100% <span style="color: var(--color-text-muted); font-weight: normal; font-size: 0.65rem;">Today</span></div>
+                        </div>
+                    </div>
+                    <!-- FOCUS SCORE -->
+                    <div class="dashboard-stat-card">
+                        <div class="stat-card-icon-wrapper" style="background: rgba(16, 185, 129, 0.1); color: var(--accent-success); border: 1px solid rgba(16, 185, 129, 0.2);">📈</div>
+                        <div class="stat-card-info">
+                            <div class="stat-card-label">Focus Score</div>
+                            <div class="stat-card-value" id="analytics-focus-score">0/100</div>
+                            <div class="stat-card-trend trend-up" id="analytics-focus-trend">↑ 12% <span style="color: var(--color-text-muted); font-weight: normal; font-size: 0.65rem;">Good</span></div>
+                        </div>
+                    </div>
+                    <!-- TESTS TAKEN -->
+                    <div class="dashboard-stat-card">
+                        <div class="stat-card-icon-wrapper" style="background: rgba(59, 130, 246, 0.1); color: var(--accent-cyan); border: 1px solid rgba(59, 130, 246, 0.2);">📋</div>
+                        <div class="stat-card-info">
+                            <div class="stat-card-label">Tests Taken</div>
+                            <div class="stat-card-value" id="tests-taken-count">8</div>
+                            <div class="stat-card-trend trend-up">↑ 14% <span style="color: var(--color-text-muted); font-weight: normal; font-size: 0.65rem;">This Week</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lower Grid column split -->
+                <div class="dashboard-grid">
+                    <!-- Main col -->
+                    <div class="dashboard-main-col">
+                        <!-- Today's Focus Mission -->
+                        <div class="glass-card card-mission" style="margin-bottom: 0; border-color: var(--accent-cyan); box-shadow: 0 0 25px hsla(180, 100%, 50%, 0.04);">
+                            <div class="card-title-row" style="margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                                <div class="card-title" style="color: var(--accent-cyan); font-size: 1.15rem; display: flex; align-items: center; gap: 8px; margin: 0;">
+                                    🎯 Today's Focus Mission
+                                    <span class="badge-tag" id="mission-progress-tag" style="background: var(--accent-cyan); color: #000; font-weight: 700; font-size: 0.7rem;">Progress: 0/5</span>
+                                </div>
+                                <button class="btn btn-primary" id="btn-start-session" onclick="startMissionsSession()" style="padding: 0.35rem 1rem; font-size: 0.75rem; font-weight: 700; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet)); border: none; color: #000; display: flex; align-items: center; gap: 6px;">START TODAY'S SESSION ➔</button>
+                            </div>
+                            
+                            <!-- Mission Steps Grid -->
+                            <div class="mission-steps-grid" id="mission-steps-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem;">
+                                <!-- Dynamically populated -->
+                            </div>
+                            
+                            <!-- Custom Progress Bar -->
+                            <div style="background: rgba(255, 255, 255, 0.05); height: 8px; border-radius: 4px; overflow: hidden; width: 100%; position: relative;">
+                                <div id="mission-progress-bar" style="background: linear-gradient(90deg, var(--accent-cyan), var(--accent-violet)); height: 100%; width: 0%; transition: width 0.4s ease;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Charts columns split -->
+                        <div style="display: grid; grid-template-columns: 210px 1fr; gap: 1.25rem;">
+                            <!-- Donut chart (left) -->
+                            <div class="glass-card">
+                                <div class="card-title" style="font-size: 0.85rem; margin-bottom: 0.75rem; color: var(--color-text-main);">Study Progress</div>
+                                
+                                <div class="donut-container">
+                                    <div id="donut-chart" style="width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(var(--accent-cyan) 0% 25%, var(--accent-violet) 25% 50%, var(--accent-gold) 50% 75%, var(--accent-success) 75% 100%); display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <div style="width: 100px; height: 100px; border-radius: 50%; background: #0c101b; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                            <span class="donut-center-value" id="donut-center-value">0+</span>
+                                            <span class="donut-center-label">PYQs Solved</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Legend -->
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; margin-top: 0.75rem; font-size: 0.65rem;">
+                                    <div style="display: flex; align-items: center; gap: 4px; color: var(--color-text-muted);">
+                                        <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-cyan);"></span> Quant (<span id="leg-quant-pct" style="color: #fff; font-weight: 700;">0</span>)
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 4px; color: var(--color-text-muted);">
+                                        <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-violet);"></span> Reasoning (<span id="leg-reasoning-pct" style="color: #fff; font-weight: 700;">0</span>)
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 4px; color: var(--color-text-muted);">
+                                        <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-gold);"></span> G.A. (<span id="leg-ga-pct" style="color: #fff; font-weight: 700;">0</span>)
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 4px; color: var(--color-text-muted);">
+                                        <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-success);"></span> English (<span id="leg-english-pct" style="color: #fff; font-weight: 700;">0</span>)
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Line chart (right) -->
+                            <div class="glass-card" style="position: relative;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                                    <div class="card-title" style="font-size: 0.85rem; margin: 0; color: var(--color-text-main);">Performance Trend</div>
+                                    <div style="display: flex; gap: 10px; font-size: 0.65rem;">
+                                        <span style="color: var(--accent-cyan); display: flex; align-items: center; gap: 3px;">● PYQs</span>
+                                        <span style="color: var(--accent-violet); display: flex; align-items: center; gap: 3px;">● Test Score</span>
+                                    </div>
+                                </div>
+                                <!-- SVG Trend Chart -->
+                                <div class="line-chart-container" id="trend-chart-svg-container">
+                                    <!-- Rendered dynamically -->
+                                </div>
+                                
+                                <!-- Interactive Tooltip Overlay -->
+                                <div id="chart-tooltip-panel" style="position: absolute; right: 20px; top: 15px; background: rgba(17, 24, 39, 0.95); border: 1px solid var(--border-glow); border-radius: var(--radius-sm); padding: 8px 12px; display: none; z-index: 10; pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,0.5);"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Quick Access & Habit timeline tracker -->
+                        <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.25rem;">
+                            <!-- Quick Access -->
+                            <div class="glass-card">
+                                <div class="card-title" style="font-size: 0.85rem; margin-bottom: 1rem;">Quick Access Modules</div>
+                                <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: flex-start; align-items: center;">
+                                    <button class="btn btn-secondary" onclick="switchSidebarView('pyq-bank')" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0.6rem 0.75rem; min-width: 76px; font-size: 0.7rem; border-color: var(--accent-cyan); background: hsla(180, 100%, 50%, 0.02);">
+                                        <span style="font-size: 1.25rem;">📖</span>
+                                        <span>PYQ Bank</span>
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="switchSidebarView('syllabus')" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0.6rem 0.75rem; min-width: 76px; font-size: 0.7rem; border-color: var(--accent-violet); background: hsla(270, 90%, 65%, 0.02);">
+                                        <span style="font-size: 1.25rem;">🗺️</span>
+                                        <span>Syllabus</span>
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="switchSidebarView('error-intel')" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0.6rem 0.75rem; min-width: 76px; font-size: 0.7rem; border-color: var(--accent-gold); background: hsla(42, 100%, 55%, 0.02);">
+                                        <span style="font-size: 1.25rem;">🧬</span>
+                                        <span>Error Log</span>
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="switchSidebarView('notes')" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0.6rem 0.75rem; min-width: 76px; font-size: 0.7rem; border-color: var(--accent-success); background: hsla(145, 80%, 45%, 0.02);">
+                                        <span style="font-size: 1.25rem;">📝</span>
+                                        <span>Scratchpad</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Habit tracker weekly dots -->
+                            <div class="glass-card">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                    <div class="card-title" style="font-size: 0.85rem; margin:0;">Habit Tracker</div>
+                                    <span style="font-size: 0.7rem; color: var(--accent-cyan); font-weight: 700;" id="weekly-habits-count-label">0/7 Days Complete</span>
+                                </div>
+                                
+                                <div style="display: flex; align-items: center; gap: 6px; justify-content: center; height: 36px;" id="dashboard-timeline-dots">
+                                    <!-- Filled dynamically in updateTimelineChecklist -->
+                                </div>
+                                <button class="btn btn-secondary" onclick="switchSidebarView('calm')" style="width: 100%; font-size: 0.7rem; padding: 0.3rem; margin-top: 0.4rem; border-color: var(--border-glow);">Open Habit Scheduler</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Side col -->
+                    <div class="dashboard-side-col">
+                        <!-- Focus score circular gauge widget -->
+                        <div class="glass-card" style="text-align: center; border-color: var(--accent-violet); box-shadow: 0 0 25px hsla(270, 90%, 65%, 0.04);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <div class="card-title" style="font-size: 0.85rem; margin:0; display: flex; align-items: center; gap: 4px;">Focus Score <span style="cursor: pointer; color: var(--color-text-muted);" title="Calculated from your streak, solved PYQs, logged errors, and revision prompt times.">ℹ️</span></div>
+                                <span class="badge-tag" style="background: var(--accent-violet); color: #fff; font-size: 0.65rem;">LIVE RATING</span>
+                            </div>
+                            
+                            <div class="gauge-container">
+                                <svg class="gauge-svg" viewBox="0 0 200 120">
+                                    <defs>
+                                        <linearGradient id="gauge-gradient" x1="0" y1="0" x2="1" y2="0">
+                                            <stop offset="0%" stop-color="var(--accent-cyan)"/>
+                                            <stop offset="50%" stop-color="var(--accent-violet)"/>
+                                            <stop offset="100%" stop-color="var(--accent-gold)"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <path class="gauge-track" d="M 20,100 A 80,80 0 0,1 180,100" />
+                                    <path class="gauge-fill" id="gauge-fill" d="M 20,100 A 80,80 0 0,1 180,100" />
+                                </svg>
+                                <div class="gauge-text-wrapper">
+                                    <span class="gauge-score" id="gauge-score">-</span>
+                                    <span class="gauge-max">/100</span>
+                                    <div class="gauge-status" id="gauge-status">Good Focus</div>
+                                </div>
+                            </div>
+                            
+                            <!-- mini weekly line -->
+                            <div style="border-top: 1px solid var(--border-glow); padding-top: 0.5rem; margin-top: 0.5rem; text-align: left;">
+                                <div style="display: flex; justify-content: space-between; font-size: 0.7rem;">
+                                    <span style="color: var(--color-text-muted);">Weekly Rating Progression</span>
+                                    <span style="color: var(--accent-success); font-weight: 700;" id="analytics-focus-trend-spark">Stable</span>
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: space-between; gap: 4px; margin-top: 4px; height: 10px;" id="gauge-sparkline-dots">
+                                    <span style="font-size: 6px; color: var(--color-text-muted);">SUN</span>
+                                    <div style="background: rgba(255,255,255,0.03); height: 4px; flex: 1; border-radius: 2px; position: relative; overflow: hidden;">
+                                        <div id="sparkline-bar-fill" style="position: absolute; left: 0; top: 0; height: 100%; width: 50%; background: var(--accent-violet);"></div>
+                                    </div>
+                                    <span style="font-size: 6px; color: var(--color-text-muted);">SAT</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Upcoming test date banner -->
+                        <div class="glass-card">
+                            <div class="card-title" style="font-size: 0.85rem; margin-bottom: 0.75rem;">Upcoming Mock Test</div>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <!-- date badge -->
+                                <div style="width: 46px; height: 46px; border-radius: var(--radius-sm); background: var(--accent-violet); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #fff; box-shadow: 0 4px 10px rgba(139,92,246,0.25);">
+                                    <span style="font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">JULY</span>
+                                    <span style="font-size: 1.2rem; font-weight: 800; font-family: var(--font-headings); line-height: 1;">12</span>
+                                </div>
+                                
+                                <div style="flex:1; min-width: 0;">
+                                    <div style="font-size: 0.85rem; font-weight: 800; color: #fff; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">SSC CGL Tier I</div>
+                                    <div style="font-size: 0.7rem; color: var(--color-text-muted);">Full Length Practice Mock</div>
+                                    <div style="font-size: 0.65rem; color: var(--accent-cyan); font-weight: 700; margin-top: 1px;">10:00 AM • 60 Mins</div>
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary" style="width: 100%; font-size: 0.7rem; padding: 0.4rem; margin-top: 0.75rem; border-color: var(--border-glow); text-transform: uppercase; letter-spacing: 0.5px;" onclick="alert('Redirecting to Practice mock engine...')">View Test Details</button>
+                        </div>
+                        
+                        <!-- Recent activities list -->
+                        <div class="glass-card">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                <div class="card-title" style="font-size: 0.85rem; margin:0;">Recent Activity</div>
+                                <span style="font-size: 0.7rem; color: var(--accent-cyan); cursor: pointer;" onclick="switchSidebarView('notes')">View All</span>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 0.75rem;" id="recent-activity-container">
+                                <!-- Populated dynamically via JS -->
+                            </div>
+                        </div>
 
-                    <!-- QUICK RESET WIDGET (Phase 7) -->
-                    <div class="quick-reset-widget" style="margin-top: 1.25rem; border-top: 1px dashed var(--border-glow); padding-top: 1rem; text-align: center;">
-                        <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 6px;">
-                            🧠 Feeling Distracted? Try a Quick Mind Reset
-                        </div>
-                        <div id="quick-reset-actions" style="display: flex; gap: 0.5rem; justify-content: center;">
-                            <button class="btn btn-secondary" onclick="startQuickReset()" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; border-color: var(--accent-cyan); color: var(--accent-cyan); background: hsla(180, 100%, 50%, 0.02);">🧘 1 Minute Breathing</button>
-                        </div>
-                        <div id="quick-reset-status" style="font-size: 0.8rem; color: var(--accent-cyan); margin-top: 0.25rem; display: none; font-weight: 700; letter-spacing: 0.5px;">
-                            <span id="quick-reset-breath-instruction">Inhale... 🌬️</span> (<span id="quick-reset-timer">60s</span>)
+                        <!-- Achievements List -->
+                        <div class="glass-card">
+                            <div class="card-title" style="font-size: 0.85rem; margin-bottom: 0.75rem;">🏆 Achievements</div>
+                            <div style="display: flex; flex-direction: column; gap: 0.75rem;" id="achievements-list">
+                                <!-- Populated dynamically via JS -->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            <!-- VIEW 2: FOCUS SPRINT TIMER VIEW -->
+            <div id="view-focus-sprint" class="focus-sprint-screen" style="display: none; width: 100%;">
+                <!-- Header bar -->
+                <div class="sprint-header">
+                    <button class="sprint-back-btn" onclick="switchSidebarView('dashboard')" title="Back to Dashboard">←</button>
+                    <div class="sprint-title-block">
+                        <h3>Focus Sprint</h3>
+                        <p>Stay focused. Get better.</p>
+                    </div>
+                    <span id="timer-status-tag" class="badge-tag" style="background: var(--border-glow); color: var(--color-text-muted); font-size: 0.75rem; font-weight: 700; padding: 4px 8px; border-radius: 4px; margin-right: 8px;">READY</span>
+                    <div class="stat-badge gold" style="padding: 0.35rem 0.75rem;">
+                        <span class="icon" style="font-size: 0.95rem;">🔥</span>
+                        <span class="stat-val" id="sprint-streak-badge-val" style="font-size: 0.8rem; color: #fff;">0 Days</span>
+                    </div>
+                </div>
+                
+                <!-- Circular timer ring -->
+                <div class="radial-timer-container">
+                    <svg class="radial-timer-svg" viewBox="0 0 300 300">
+                        <defs>
+                            <linearGradient id="timer-ring-gradient" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="var(--accent-cyan)"/>
+                                <stop offset="50%" stop-color="var(--accent-violet)"/>
+                                <stop offset="100%" stop-color="var(--accent-violet)"/>
+                            </linearGradient>
+                        </defs>
+                        <circle class="radial-timer-bg" cx="150" cy="150" r="140" />
+                        <!-- progress ring, circumference is 2*pi*140 = 879.64 -->
+                        <circle class="radial-timer-progress" id="timer-ring" cx="150" cy="150" r="140" style="stroke-dasharray: 879.64; stroke-dashoffset: 0;" />
+                        <circle class="radial-timer-head-cap" id="timer-head-cap" cx="150" cy="10" r="6" />
+                    </svg>
+                    
+                    <div class="radial-timer-inner">
+                        <div class="radial-timer-inner-brain">🧠</div>
+                        <div class="radial-timer-inner-title">— Focus Sprint —</div>
+                        <div class="radial-timer-inner-time" id="time-left">15:00</div>
+                        <div class="radial-timer-inner-sub" id="current-subject-label">Reasoning</div>
+                    </div>
+                </div>
+                
+                <!-- Timer Controls -->
+                <div class="sprint-controls">
+                    <div style="text-align: center;">
+                        <button class="sprint-control-btn" id="btn-timer-restart" title="Restart Session">↻</button>
+                        <div class="sprint-control-label">Restart</div>
+                    </div>
+                    <button class="sprint-control-btn btn-play" id="btn-timer-start-pause">▶</button>
+                    <div style="text-align: center;">
+                        <button class="sprint-control-btn" id="btn-timer-reset" title="End Sprint">■</button>
+                        <div class="sprint-control-label">End Sprint</div>
+                    </div>
+                </div>
+                
+                <!-- Up next & Today's progress -->
+                <div class="sprint-progress-card">
+                    <div class="sprint-progress-col">
+                        <div class="sprint-progress-title">Up Next</div>
+                        <div class="up-next-block">
+                            <div class="up-next-icon">📖</div>
+                            <div>
+                                <div class="up-next-name" id="sprint-up-next-subject">Maths Practice</div>
+                                <div class="up-next-duration">30 min</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sprint-progress-col">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <div class="sprint-progress-title">Today's Progress</div>
+                            <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 700;" id="sprint-progress-text">0/5 Sprints</span>
+                        </div>
+                        <div class="sprint-dots-row" id="sprint-dots-container">
+                            <!-- Loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bottom Quote banner -->
+                <div style="width: 100%; background: rgba(16, 185, 129, 0.03); border: 1px solid rgba(16, 185, 129, 0.12); border-radius: var(--radius-md); padding: 0.85rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 0.5rem;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 2rem; color: var(--accent-success); line-height: 0; font-family: serif; font-weight: 900; margin-top: 8px;">“</span>
+                        <span style="font-style: italic; font-size: 0.8rem; color: var(--color-text-muted);" id="timer-bottom-quote-val">Discipline is choosing between what you want now and what you want most.</span>
+                    </div>
+                    <span style="font-size: 1.25rem; color: var(--accent-success); filter: drop-shadow(0 0 4px var(--accent-success));">🍃</span>
+                </div>
+                
+                <!-- TIMER SETTINGS PANEL (Preserved & accessible via gear overlay or simple settings view) -->
+                <div class="timer-settings-panel" id="timer-settings-panel" style="position: static; margin-top: 1rem; width: 100%; display: none; background: rgba(17, 24, 39, 0.5); border: 1px solid var(--border-glow); border-radius: var(--radius-md); padding: 1.25rem; box-shadow: none;">
+                    <h4 style="font-family: var(--font-headings); font-size: 1rem; color: var(--accent-cyan); margin-bottom: 1rem;">Timer settings</h4>
+                    
+                    <div class="settings-form-row" style="margin-bottom: 1rem;">
+                        <label style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.35rem;">Subject / Task Category</label>
+                        <select id="custom-timer-subject" style="width:100%; background: var(--bg-base); border: 1px solid var(--border-glow); padding: 0.5rem; border-radius: var(--radius-sm); color: #fff; font-size: 0.85rem;">
+                            <option value="Reasoning">Reasoning</option>
+                            <option value="Quantitative Aptitude">Quantitative Aptitude</option>
+                            <option value="English">English</option>
+                            <option value="General Awareness">General Awareness</option>
+                            <option value="Custom Task">Custom Task</option>
+                        </select>
+                    </div>
+                    
+                    <div class="settings-form-row" style="margin-bottom: 1.25rem;">
+                        <label style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.35rem;">Sprint Duration (minutes)</label>
+                        <input type="number" id="custom-timer-duration" value="15" min="1" max="180" style="width:100%; background: var(--bg-base); border: 1px solid var(--border-glow); padding: 0.5rem; border-radius: var(--radius-sm); color: #fff; font-size: 0.85rem;">
+                    </div>
+                    
+                    <div style="display: flex; gap: 0.75rem;">
+                        <button class="btn btn-primary" onclick="applyCustomTimerSettings()" style="flex:1; padding: 0.5rem; font-size: 0.8rem;">Apply</button>
+                        <button class="btn btn-secondary" onclick="toggleTimerSettings()" style="flex:1; padding: 0.5rem; font-size: 0.8rem;">Cancel</button>
+                    </div>
+                </div>
+                
+                <!-- TIMER PRESETS (Preserved & placed inside Sprint view for quick preset selection) -->
+                <div style="width: 100%; margin-top: 1rem;">
+                    <div style="font-size: 0.75rem; color: var(--color-text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; text-align: left;">Sprint Presets</div>
+                    <div class="timer-presets" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 0.5rem;">
+                        <button class="preset-btn active" data-time="15" data-subject="Reasoning" style="padding: 0.5rem; font-size: 0.75rem;">
+                            <span class="label-time">15m</span>
+                            <span style="font-size: 0.6rem; color: var(--color-text-muted); display: block;">Reasoning</span>
+                        </button>
+                        <button class="preset-btn" data-time="25" data-subject="Quantitative Aptitude" style="padding: 0.5rem; font-size: 0.75rem;">
+                            <span class="label-time">25m</span>
+                            <span style="font-size: 0.6rem; color: var(--color-text-muted); display: block;">Quant</span>
+                        </button>
+                        <button class="preset-btn" data-time="20" data-subject="English" style="padding: 0.5rem; font-size: 0.75rem;">
+                            <span class="label-time">20m</span>
+                            <span style="font-size: 0.6rem; color: var(--color-text-muted); display: block;">English</span>
+                        </button>
+                        <button class="preset-btn" data-time="15" data-subject="General Awareness" style="padding: 0.5rem; font-size: 0.75rem;">
+                            <span class="label-time">15m</span>
+                            <span style="font-size: 0.6rem; color: var(--color-text-muted); display: block;">G.A.</span>
+                        </button>
+                        <button class="preset-btn special-pomo" data-time="60" data-subject="Full Test Drill" style="padding: 0.5rem; font-size: 0.75rem; border-color: var(--accent-violet);">
+                            <span class="label-time">60m</span>
+                            <span style="font-size: 0.6rem; color: var(--accent-violet); display: block;">Full Test</span>
+                        </button>
+                        <button class="preset-btn" style="padding: 0.5rem; font-size: 0.75rem; border-color: var(--accent-gold); color: var(--accent-gold);" onclick="toggleTimerSettings()">Custom ⚙️</button>
+                    </div>
+                </div>
+                
+                <!-- Quick reset breathing widget (Preserved & placed at bottom of timer panel) -->
+                <!-- QUICK RESET WIDGET (Phase 7) -->
+                <div class="quick-reset-widget" style="margin-top: 1rem; border-top: 1px dashed var(--border-glow); padding-top: 0.75rem; text-align: center; width: 100%;">
+                    <div style="font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 0.4rem; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                        🧠 Feeling Distracted? Try a Quick Mind Reset
+                    </div>
+                    <div id="quick-reset-actions" style="display: flex; gap: 0.5rem; justify-content: center;">
+                        <button class="btn btn-secondary" onclick="startQuickReset()" style="padding: 0.35rem 0.75rem; font-size: 0.7rem; border-color: var(--accent-cyan); color: var(--accent-cyan); background: hsla(180, 100%, 50%, 0.01);">🧘 1 Minute Breathing</button>
+                    </div>
+                    <div id="quick-reset-status" style="font-size: 0.75rem; color: var(--accent-cyan); margin-top: 0.25rem; display: none; font-weight: 700; letter-spacing: 0.5px;">
+                        <span id="quick-reset-breath-instruction">Inhale... 🌬️</span> (<span id="quick-reset-timer">60s</span>)
+                    </div>
+                </div>
+            </div>
+            
+            <!-- VIEW 3: SYLLABUS MAP -->
+            <div id="view-syllabus-map" style="display: none; width: 100%;">
+                <div style="display: grid; grid-template-columns: 1fr 300px; gap: 1.5rem; align-items: start;">
+                    <div>
+                                    <div class="glass-card card-syllabus">
+                <div class="card-title">🎯 CGL Core Syllabus Map</div>
+                
+                <div class="syllabus-module">
+                    <input type="text" class="syllabus-search" id="syllabus-search-input" placeholder="Search syllabus topics & subtopics..." oninput="filterSyllabus()">
+                    
+                    <div class="syllabus-tabs">
+                        <button class="tab-btn active" onclick="switchSyllabusTab('Reasoning')">Reasoning</button>
+                        <button class="tab-btn" onclick="switchSyllabusTab('Quantitative Aptitude')">Math (Quant)</button>
+                        <button class="tab-btn" onclick="switchSyllabusTab('English')">English</button>
+                        <button class="tab-btn" onclick="switchSyllabusTab('General Awareness')">G.A.</button>
+                    </div>
 
-            <!-- 🧬 ERROR INTELLIGENCE SYSTEM CARD (Phase 3 Promoted) -->
-            <div class="glass-card card-error-intel" style="border-color: var(--accent-violet); box-shadow: 0 0 25px hsla(270, 90%, 65%, 0.1);">
+                    <div class="syllabus-list" id="syllabus-items-list">
+                        <!-- Populated dynamically -->
+                    </div>
+                    
+                    <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem; border-color: var(--accent-cyan); color: var(--accent-cyan); display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.85rem;" onclick="openCustomSyllabusModal()">
+                        ➕ ADD CUSTOM CONCEPT
+                    </button>
+                </div>
+            </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                                    <div class="glass-card card-ssc" style="border-color: var(--accent-gold); box-shadow: 0 0 25px hsla(42, 100%, 55%, 0.1);">
+                <div class="card-title" style="color: var(--accent-gold); display: flex; justify-content: space-between; align-items: center;">
+                    <span>🏆 SSC CGL Exam Target Control</span>
+                    <span id="ssc-countdown" style="font-size: 0.75rem; background: var(--accent-gold); color: #000; padding: 2px 8px; border-radius: 4px; font-weight: 700;">--- Days Left</span>
+                </div>
+                
+                <!-- Daily Target Checkboxes -->
+                <div style="margin: 0.75rem 0; text-align: left;">
+                    <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-gold); font-weight: 700; margin-bottom: 0.4rem;">📋 CGL Daily Targets</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; background: rgba(255,255,255,0.01); padding: 0.5rem; border-radius: 6px; border: 1px solid var(--border-glow);">
+                        <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--color-text-muted); cursor: pointer;">
+                            <input type="checkbox" id="target-vocab" onchange="toggleDailyTarget('vocab')" style="accent-color: var(--accent-gold);"> Vocab Chores
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--color-text-muted); cursor: pointer;">
+                            <input type="checkbox" id="target-reasoning" onchange="toggleDailyTarget('reasoning')" style="accent-color: var(--accent-gold);"> Reasoning Sprint
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--color-text-muted); cursor: pointer;">
+                            <input type="checkbox" id="target-math" onchange="toggleDailyTarget('math')" style="accent-color: var(--accent-gold);"> Math Practice
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--color-text-muted); cursor: pointer;">
+                            <input type="checkbox" id="target-general" onchange="toggleDailyTarget('general')" style="accent-color: var(--accent-gold);"> GS Revision
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Syllabus completion progress bars -->
+                <div style="text-align: left;">
+                    <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-text-muted); font-weight: 700; margin-bottom: 0.4rem;">📈 Subject completion rates</div>
+                    <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 0.1rem;">
+                                <span>Reasoning</span>
+                                <span id="completion-reasoning">0%</span>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.05); height: 5px; border-radius: 2.5px; overflow: hidden;">
+                                <div id="bar-completion-reasoning" style="background: var(--accent-cyan); height: 100%; width: 0%; transition: width 0.3s;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 0.1rem;">
+                                <span>Quant Aptitude</span>
+                                <span id="completion-quant">0%</span>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.05); height: 5px; border-radius: 2.5px; overflow: hidden;">
+                                <div id="bar-completion-quant" style="background: var(--accent-gold); height: 100%; width: 0%; transition: width 0.3s;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 0.1rem;">
+                                <span>English Language</span>
+                                <span id="completion-english">0%</span>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.05); height: 5px; border-radius: 2.5px; overflow: hidden;">
+                                <div id="bar-completion-english" style="background: var(--accent-violet); height: 100%; width: 0%; transition: width 0.3s;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 0.1rem;">
+                                <span>General Awareness</span>
+                                <span id="completion-gs">0%</span>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.05); height: 5px; border-radius: 2.5px; overflow: hidden;">
+                                <div id="bar-completion-gs" style="background: var(--accent-danger); height: 100%; width: 0%; transition: width 0.3s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 4: ERROR INTEL -->
+            <div id="view-error-intel" style="display: none; width: 100%;">
+                            <div class="glass-card card-error-intel" style="border-color: var(--accent-violet); box-shadow: 0 0 25px hsla(270, 90%, 65%, 0.1);">
                 <div class="card-title">🧬 Error Intelligence System</div>
                 
                 <div class="error-intel-module">
@@ -2487,143 +3735,13 @@
                     </div>
                 </div>
             </div>
-
-            <!-- ATOMIC HABITS & CHECKLIST -->
-            <div class="glass-card">
-                <div class="card-title">⚡ Daily Atomic Habit Tracker</div>
-                
-                <div class="checklist-module">
-                    <!-- The Two-Minute Rule Active Incrementor -->
-                    <div class="habit-incrementer">
-                        <div class="incrementer-title">
-                            <span class="title-text">Two-Minute Rule: PYQs Solved</span>
-                            <span class="sub-text">Break the friction: solve at least 1 today.</span>
-                        </div>
-                        <div class="incrementer-controls">
-                            <button class="inc-btn" onclick="adjustQuestions(-5)">-5</button>
-                            <button class="inc-btn" onclick="adjustQuestions(-1)">-1</button>
-                            <span class="counter-val" id="today-questions-solved">0</span>
-                            <button class="inc-btn" onclick="adjustQuestions(1)">+1</button>
-                            <button class="inc-btn" onclick="adjustQuestions(5)">+5</button>
-                        </div>
-                    </div>
-
-                    <!-- Visual Routine Checklist -->
-                    <div class="timeline-container" id="timeline-container">
-                        <!-- Loaded dynamically -->
-                    </div>
-                    <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem; border-color: var(--accent-cyan); color: var(--accent-cyan);" onclick="openCustomHabitModal()">
-                        ➕ ADD CUSTOM HABIT
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- RIGHT COLUMN: PROGRESS, COUNTER, SCRATCHPAD, SYLLABUS, COOKIE JAR -->
-        <div style="display: flex; flex-direction: column; gap: 2rem;">
-            
-            <!-- WEEKLY ANALYTICS & SCOREBOARD (Phase 4) -->
-            <div class="glass-card card-analytics" style="border-color: var(--accent-violet); box-shadow: 0 0 25px hsla(270, 90%, 65%, 0.1);">
-                <div class="card-title" style="color: var(--accent-violet);">📊 Focus Score & Weekly Report</div>
-                <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 1rem; margin-top: 0.75rem; text-align: left;">
-                    <div class="focus-score-box" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-glow); border-radius: var(--radius-md); padding: 0.75rem; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                        <span class="text-label" style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-text-muted);">CGL Focus Rating</span>
-                        <span id="analytics-focus-score" style="font-family: var(--font-headings); font-size: 2.2rem; font-weight: 700; color: var(--accent-violet); margin: 0.25rem 0;">80/100</span>
-                        <span id="analytics-focus-trend" style="font-size: 0.75rem; color: var(--accent-success); font-weight: 700;">This Week ➔ Stable</span>
-                    </div>
-                    <div class="analytics-metrics-box" style="display: flex; flex-direction: column; gap: 0.4rem; justify-content: center;">
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.2rem;">
-                            <span style="font-size: 0.75rem; color: var(--color-text-muted);">⏱️ Sprints Time:</span>
-                            <span id="weekly-sprint-time" style="font-size: 0.75rem; font-weight: 700; color: #fff;">0h</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.2rem;">
-                            <span style="font-size: 0.75rem; color: var(--color-text-muted);">🎯 PYQs Solved:</span>
-                            <span id="weekly-pyqs-solved" style="font-size: 0.75rem; font-weight: 700; color: #fff;">0</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.2rem;">
-                            <span style="font-size: 0.75rem; color: var(--color-text-muted);">🧬 Errors Logged:</span>
-                            <span id="weekly-mistakes-logged" style="font-size: 0.75rem; font-weight: 700; color: #fff;">0</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.2rem;">
-                            <span style="font-size: 0.75rem; color: var(--color-text-muted);">🏆 Mastered:</span>
-                            <span id="weekly-concepts-mastered" style="font-size: 0.75rem; font-weight: 700; color: #fff;">0</span>
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            <!-- SSC TARGETS & PROGRESS MONITOR (Phase 6) -->
-            <div class="glass-card card-ssc" style="border-color: var(--accent-gold); box-shadow: 0 0 25px hsla(42, 100%, 55%, 0.1);">
-                <div class="card-title" style="color: var(--accent-gold); display: flex; justify-content: space-between; align-items: center;">
-                    <span>🏆 SSC CGL Exam Target Control</span>
-                    <span id="ssc-countdown" style="font-size: 0.75rem; background: var(--accent-gold); color: #000; padding: 2px 8px; border-radius: 4px; font-weight: 700;">--- Days Left</span>
-                </div>
-                
-                <!-- Daily Target Checkboxes -->
-                <div style="margin: 0.75rem 0; text-align: left;">
-                    <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-gold); font-weight: 700; margin-bottom: 0.4rem;">📋 CGL Daily Targets</div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; background: rgba(255,255,255,0.01); padding: 0.5rem; border-radius: 6px; border: 1px solid var(--border-glow);">
-                        <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--color-text-muted); cursor: pointer;">
-                            <input type="checkbox" id="target-vocab" onchange="toggleDailyTarget('vocab')" style="accent-color: var(--accent-gold);"> Vocab Chores
-                        </label>
-                        <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--color-text-muted); cursor: pointer;">
-                            <input type="checkbox" id="target-reasoning" onchange="toggleDailyTarget('reasoning')" style="accent-color: var(--accent-gold);"> Reasoning Sprint
-                        </label>
-                        <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--color-text-muted); cursor: pointer;">
-                            <input type="checkbox" id="target-math" onchange="toggleDailyTarget('math')" style="accent-color: var(--accent-gold);"> Math Practice
-                        </label>
-                        <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--color-text-muted); cursor: pointer;">
-                            <input type="checkbox" id="target-general" onchange="toggleDailyTarget('general')" style="accent-color: var(--accent-gold);"> GS Revision
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Syllabus completion progress bars -->
-                <div style="text-align: left;">
-                    <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-text-muted); font-weight: 700; margin-bottom: 0.4rem;">📈 Subject completion rates</div>
-                    <div style="display: flex; flex-direction: column; gap: 0.4rem;">
-                        <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 0.1rem;">
-                                <span>Reasoning</span>
-                                <span id="completion-reasoning">0%</span>
-                            </div>
-                            <div style="background: rgba(255,255,255,0.05); height: 5px; border-radius: 2.5px; overflow: hidden;">
-                                <div id="bar-completion-reasoning" style="background: var(--accent-cyan); height: 100%; width: 0%; transition: width 0.3s;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 0.1rem;">
-                                <span>Quant Aptitude</span>
-                                <span id="completion-quant">0%</span>
-                            </div>
-                            <div style="background: rgba(255,255,255,0.05); height: 5px; border-radius: 2.5px; overflow: hidden;">
-                                <div id="bar-completion-quant" style="background: var(--accent-gold); height: 100%; width: 0%; transition: width 0.3s;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 0.1rem;">
-                                <span>English Language</span>
-                                <span id="completion-english">0%</span>
-                            </div>
-                            <div style="background: rgba(255,255,255,0.05); height: 5px; border-radius: 2.5px; overflow: hidden;">
-                                <div id="bar-completion-english" style="background: var(--accent-violet); height: 100%; width: 0%; transition: width 0.3s;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 0.1rem;">
-                                <span>General Awareness</span>
-                                <span id="completion-gs">0%</span>
-                            </div>
-                            <div style="background: rgba(255,255,255,0.05); height: 5px; border-radius: 2.5px; overflow: hidden;">
-                                <div id="bar-completion-gs" style="background: var(--accent-danger); height: 100%; width: 0%; transition: width 0.3s;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- THE ACTIVE SCRATCHPAD (DISTRACTION LOCKER) -->
-            <div class="glass-card card-scratchpad">
+            <!-- VIEW 5: SCRATCHPAD / NOTES -->
+            <div id="view-scratchpad" style="display: none; width: 100%;">
+                <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.5rem; align-items: start;">
+                    <div>
+                                    <div class="glass-card card-scratchpad">
                 <div class="card-title">
                     📝 Active Scratchpad
                     <span class="badge-tag" id="scratchpad-tag">NO ACTIVE SPRINT</span>
@@ -2654,9 +3772,9 @@
                     </div>
                 </div>
             </div>
-
-            <!-- GOGGINS MOTIVATIONAL COOKIE JAR -->
-            <div class="glass-card card-cookie-jar">
+                    </div>
+                    <div>
+                                    <div class="glass-card card-cookie-jar">
                 <div class="card-title">🍪 Goggins-Style Cookie Jar</div>
                 
                 <div class="cookie-jar-module">
@@ -2688,37 +3806,44 @@
                     </div>
                 </div>
             </div>
-
-
-
-            <!-- CGL SYLLABUS ACCORDION CHECKLIST -->
-            <div class="glass-card card-syllabus">
-                <div class="card-title">🎯 CGL Core Syllabus Map</div>
-                
-                <div class="syllabus-module">
-                    <input type="text" class="syllabus-search" id="syllabus-search-input" placeholder="Search syllabus topics & subtopics..." oninput="filterSyllabus()">
-                    
-                    <div class="syllabus-tabs">
-                        <button class="tab-btn active" onclick="switchSyllabusTab('Reasoning')">Reasoning</button>
-                        <button class="tab-btn" onclick="switchSyllabusTab('Quantitative Aptitude')">Math (Quant)</button>
-                        <button class="tab-btn" onclick="switchSyllabusTab('English')">English</button>
-                        <button class="tab-btn" onclick="switchSyllabusTab('General Awareness')">G.A.</button>
                     </div>
-
-                    <div class="syllabus-list" id="syllabus-items-list">
-                        <!-- Populated dynamically -->
-                    </div>
-                    
-                    <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem; border-color: var(--accent-cyan); color: var(--accent-cyan); display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.85rem;" onclick="openCustomSyllabusModal()">
-                        ➕ ADD CUSTOM CONCEPT
-                    </button>
                 </div>
             </div>
-        </div>
-        </div>
 
-        <!-- STUDYCALM HUB SPA VIEW -->
-        <div id="view-calm-hub" style="display: none;">
+            <!-- VIEW 6: HABITS / TIMELINE -->
+            <div id="view-habit-tracker" style="display: none; width: 100%;">
+                <div class="glass-card">
+                    <div class="card-title">⚡ Daily Atomic Habit Tracker</div>
+                    
+                    <div class="checklist-module">
+                        <!-- The Two-Minute Rule Active Incrementor -->
+                        <div class="habit-incrementer">
+                            <div class="incrementer-title">
+                                <span class="title-text">Two-Minute Rule: PYQs Solved</span>
+                                <span class="sub-text">Break the friction: solve at least 1 today.</span>
+                            </div>
+                            <div class="incrementer-controls">
+                                <button class="inc-btn" onclick="adjustQuestions(-5)">-5</button>
+                                <button class="inc-btn" onclick="adjustQuestions(-1)">-1</button>
+                                <span class="counter-val" id="today-questions-solved">0</span>
+                                <button class="inc-btn" onclick="adjustQuestions(1)">+1</button>
+                                <button class="inc-btn" onclick="adjustQuestions(5)">+5</button>
+                            </div>
+                        </div>
+
+                        <!-- Visual Routine Checklist -->
+                        <div class="timeline-container" id="timeline-container">
+                            <!-- Loaded dynamically -->
+                        </div>
+                        <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem; border-color: var(--accent-cyan); color: var(--accent-cyan);" onclick="openCustomHabitModal()">
+                            ➕ ADD CUSTOM HABIT
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 7: CALM HUB -->
+            <div id="view-calm-hub" style="display: none; width: 100%;">
             <!-- LEFT COLUMN: FOCUS BREATHING & BROWN NOISE -->
             <div style="display: flex; flex-direction: column; gap: 2rem;">
                 
@@ -2831,7 +3956,9 @@
                 </div>
             </div>
         </div>
+        </main>
     </div>
+    
 
     <!-- CONGRATULATIONS MODAL FLASH -->
     <div class="congrats-flash" id="congrats-card">
