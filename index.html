@@ -2316,6 +2316,19 @@
             text-align: center;
         }
 
+        .sidebar-menu-item.locked-tab {
+            opacity: 0.45;
+            position: relative;
+        }
+        
+        .sidebar-menu-item.locked-tab::after {
+            content: "🔒";
+            position: absolute;
+            right: 0.85rem;
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
         /* ⏱️ SIDEBAR TIMER WIDGET */
         .sidebar-timer-widget {
             background: hsla(222, 25%, 15%, 0.4);
@@ -3089,8 +3102,11 @@
                 <!-- Header greeting -->
                 <div class="dashboard-header">
                     <div class="welcome-block">
-                        <h2 id="greeting-title">Good evening, Bhaskar! 👋</h2>
-                        <p>Stay consistent today. Success is built in focused minutes.</p>
+                        <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+                            <h2 id="greeting-title" style="margin: 0;">Good evening, Bhaskar! 👋</h2>
+                            <button onclick="resetAllStateData()" class="btn btn-secondary" style="padding: 0.25rem 0.6rem; font-size: 0.65rem; border-color: hsla(0, 85%, 60%, 0.4); color: var(--accent-danger); background: hsla(0, 85%, 60%, 0.05); border-radius: var(--radius-sm); font-weight: 700; height: 24px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='hsla(0, 85%, 60%, 0.15)'" onmouseout="this.style.background='hsla(0, 85%, 60%, 0.05)'">Reset Data 🔄</button>
+                        </div>
+                        <p style="margin-top: 4px;">Stay consistent today. Success is built in focused minutes.</p>
                     </div>
                     
                     <div class="header-badges-row">
@@ -3164,7 +3180,7 @@
                         <div class="stat-card-icon-wrapper" style="background: rgba(59, 130, 246, 0.1); color: var(--accent-cyan); border: 1px solid rgba(59, 130, 246, 0.2);">📋</div>
                         <div class="stat-card-info">
                             <div class="stat-card-label">Tests Taken</div>
-                            <div class="stat-card-value" id="tests-taken-count">8</div>
+                            <div class="stat-card-value" id="tests-taken-count">0</div>
                             <div class="stat-card-trend trend-up">↑ 14% <span style="color: var(--color-text-muted); font-weight: normal; font-size: 0.65rem;">This Week</span></div>
                         </div>
                     </div>
